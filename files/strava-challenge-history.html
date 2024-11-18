@@ -1,1 +1,2371 @@
-<!-- OVERRIDE ME WITH HTML COPY/PASTED FROM https://www.strava.com/athletes/[YOUR_ATHLETE_ID]/trophy-case -->
+<!-- Application Layout -->
+<!DOCTYPE html>
+<html class='logged-in  feed3p0 old-login' dir='ltr' lang='en-GB' xmlns:fb='http://www.facebook.com/2008/fbml' xmlns:og='http://opengraphprotocol.org/schema/' xmlns='http://www.w3.org/TR/html5'>
+<!--
+layout application
+-->
+<head>
+<head>
+<meta charset='UTF-8'>
+<style type='text/css'>
+.spinner, .spinner .status {
+  position: relative;
+}
+.spinner {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.spinner .status {
+  top: 2px;
+  margin-left: 0.5em;
+}
+.spinner .status:empty {
+  display: none;
+}
+.spinner.lg .graphic {
+  border-width: 3px;
+  height: 32px;
+  width: 32px;
+}
+.spinner.tiny {
+  height: 10px;
+  width: 10px;
+}
+.spinner.centered, .spinner.vcentered {
+  box-sizing: border-box;
+  width: 100%;
+}
+.spinner.vcentered {
+  left: 0;
+  margin-top: -12px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 50%;
+}
+.spinner .graphic, .ajax-loading-image {
+  animation: spin 1.2s infinite linear;
+  box-sizing: border-box;
+  border-color: #eee;
+  border-radius: 50%;
+  border-style: solid;
+  border-top-color: #666;
+  border-top-style: solid;
+  border-width: 2px;
+  content: "";
+  display: inline-block;
+  height: 20px;
+  position: relative;
+  vertical-align: middle;
+  width: 20px;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+</style>
+
+<link rel="stylesheet" href="https://d3nn82uaxijpm6.cloudfront.net/assets/strava-app-icons-540ba5e859b3fca8dd10eb652f578dba990245769c2b0ef79d9f431d5b271498.css" media="screen" />
+<link rel="stylesheet" href="https://d3nn82uaxijpm6.cloudfront.net/assets/application-67b2eeda77a5f87a6314bfc41af9340ab97d09ac9271b69a97ab4d2f25b325ff.css" media="screen" />
+<link rel="stylesheet" href="https://d3nn82uaxijpm6.cloudfront.net/assets/strava-app-profile-ce2f406812e21d2f492d5c3cd2218494ed329e3cd7f7a835b5b90dc753711384.css" media="screen" />
+<link rel="stylesheet" href="https://d3nn82uaxijpm6.cloudfront.net/assets/shared/_leaf-a2696fd5cf1da270a28ee6bbb5c19aeb5ddea76e8260707397d39120b06b8996.css" media="screen" />
+
+<link href='https://d3nn82uaxijpm6.cloudfront.net/apple-touch-icon-180x180.png?v=dLlWydWlG8' rel='apple-touch-icon' sizes='180x180'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/apple-touch-icon-152x152.png?v=dLlWydWlG8' rel='apple-touch-icon' sizes='152x152'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/apple-touch-icon-144x144.png?v=dLlWydWlG8' rel='apple-touch-icon' sizes='144x144'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/apple-touch-icon-120x120.png?v=dLlWydWlG8' rel='apple-touch-icon' sizes='120x120'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/apple-touch-icon-114x114.png?v=dLlWydWlG8' rel='apple-touch-icon' sizes='114x114'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/apple-touch-icon-76x76.png?v=dLlWydWlG8' rel='apple-touch-icon' sizes='76x76'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/apple-touch-icon-72x72.png?v=dLlWydWlG8' rel='apple-touch-icon' sizes='72x72'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/apple-touch-icon-60x60.png?v=dLlWydWlG8' rel='apple-touch-icon' sizes='60x60'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/apple-touch-icon-57x57.png?v=dLlWydWlG8' rel='apple-touch-icon' sizes='57x57'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/favicon-32x32.png?v=dLlWydWlG8' rel='icon' sizes='32x32' type='image/png'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/icon-strava-chrome-192.png?v=dLlWydWlG8' rel='icon' sizes='192x192' type='image/png'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/favicon-96x96.png?v=dLlWydWlG8' rel='icon' sizes='96x96' type='image/png'>
+<link href='https://d3nn82uaxijpm6.cloudfront.net/favicon-16x16.png?v=dLlWydWlG8' rel='icon' sizes='16x16' type='image/png'>
+<link href='/manifest.json?v=dLlWydWlG8' rel='manifest'>
+<meta content='#FC5200' name='msapplication-TileColor'>
+<meta content='https://d3nn82uaxijpm6.cloudfront.net/mstile-144x144.png?v=dLlWydWlG8' name='msapplication-TileImage'>
+<meta content='#F7F7FA' name='theme-color'>
+<meta content='Strava' name='apple-mobile-web-app-title'>
+<meta content='Strava' name='application-name'>
+<meta content='yes' name='apple-mobile-web-app-capable'>
+<meta content='black' name='apple-mobile-web-app-status-bar-style'>
+
+<script type='application/ld+json'>
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "Strava",
+  "url": "https://www.strava.com/",
+  "logo": "https://d3nn82uaxijpm6.cloudfront.net/assets/website_v2/svgs/strava-orange-c33577e7257d5ac4a2e972564c5c7556037f3d005c5b5cb2f0e0d06ac7b84c47.svg",
+  "sameAs": [
+    "https://facebook.com/Strava",
+    "https://twitter.com/strava",
+    "https://instagram.com/strava",
+    "https://youtube.com/stravainc",
+    "https://www.linkedin.com/company/strava-inc./",
+    "https://stories.strava.com",
+    "https://github.com/strava",
+    "https://medium.com/strava-engineering"
+  ]
+}
+
+
+</script>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="91ljDEetMCqKUEkpeKZYdUT9UbmYK8D2kKeeHHmZRj3LF7vXdJ0iNJ1yrO1RITinArSd5a_Fccxv2KlJpiXlHQ" />
+<script>
+  window.StravaSentry = { 
+    enabled: true,
+    release: "7cf3115b4228ae135f3d3aef268a974cb0d97fdb",
+    userId: 30541205,
+    environment: "production",
+    dsn: "https://6ffc1c27d92347b49d7659886aab9deb@o352714.ingest.sentry.io/5816222",
+    debug: "false",
+    sampleRate: 1,
+    pageProperties: null,
+    mobileOS: "Web",
+    isMobile: false
+  }
+  
+  window.StravaDevTools = {
+    enabled: false
+  }
+</script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/runtime-56517de6f7c84f602ffc.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/21944-3d86ae588965ebc70040.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/35592-57a51ed8ed854d2b18ca.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/10603-0d2522db11b3d61a86c0.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/20459-3bc8c6cf573225ac4291.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/94409-be9b9c0ade04bc9f598f.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/55822-af39241eab1e78f423ed.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/56662-c373d670b5f2fc5e6784.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/96757-68d13787408083a16d0a.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/91151-84fb2c8583f9f20fbb5a.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/55911-aadc1b6fd6ae178044bf.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/48356-9f654103860d64098c4a.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/20132-40308332d3622295f213.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/50354-d2105366002b86536483.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/10880-9acaaaf93f3a3507d167.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/212-65db9c226ab4795c3ca0.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/73170-6a2a12718c143cf50118.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/88392-186588a22ccefee4acb1.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/18010-ec180f64a8c175425644.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/74015-d4c0143dfe02f8347743.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/77399-d6e632ad063d1cfa9033.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/97154-18bc85c506e390af541f.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/67871-d97a4324ee638a01dfbf.js"></script>
+<script src="//d3nn82uaxijpm6.cloudfront.net/packs/js/strava_with_framework-814849401c13e2f50809.js"></script>
+
+<script>
+  !function() {
+    if (!!window.stravaPublicServiceEnv) {
+      // Object containing no secret key value pairs that are expected to be seen and used in the browser.
+      // This keys are commonly passed to 3rd party libs or tooling.
+      window.stravaPublicServiceEnv({
+        MUX_ENV_KEY: "bqst82u23r97a7fuo892gfpn2",
+        MUX_DATA_VIEWER_USER_ID: "v1:64012a5cae44492497fc83e78e43151931af193829237e50ed006964cac4f8f4",
+        VIDEOJS_LOG_LEVEL: "error"
+      });
+    }
+  }();
+</script>
+
+<script src="https://d3nn82uaxijpm6.cloudfront.net/assets/strava-head-ceb9519e86fef9d99673025e70fdccf83c2eef2f91b8899ddebc50ec183ba5d9.js"></script>
+
+
+<link href='https://www.strava.com/athletes/30541205/trophy-case' rel='canonical'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case' hreflang='x-default' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case' hreflang='en' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=en-GB' hreflang='en-gb' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=fr-FR' hreflang='fr' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=de-DE' hreflang='de' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=pt-BR' hreflang='pt-br' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=es-ES' hreflang='es-es' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=it-IT' hreflang='it' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=ru-RU' hreflang='ru' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=es-419' hreflang='es-419' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=ja-JP' hreflang='ja' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=nl-NL' hreflang='nl' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=zh-TW' hreflang='zh-tw' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=pt-PT' hreflang='pt-pt' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=zh-CN' hreflang='zh-cn' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=id-ID' hreflang='en' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=pt-PT' hreflang='pt' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=es-ES' hreflang='es' rel='alternate'>
+<link href='https://www.strava.com/athletes/30541205/trophy-case?hl=zh-CN' hreflang='zh' rel='alternate'>
+
+<title>Trophy Case | Domen Preloznik | Strava Cyclist Profile</title>
+<link rel="stylesheet" href="//d3nn82uaxijpm6.cloudfront.net/packs/css/56662-264e6792.css" media="screen" />
+<link rel="stylesheet" href="//d3nn82uaxijpm6.cloudfront.net/packs/css/212-406f29f2.css" media="screen" />
+<link rel="stylesheet" href="//d3nn82uaxijpm6.cloudfront.net/packs/css/strava_with_framework-05716213.css" media="screen" />
+<script>
+  function loadGTM() {
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+    {'gtm.start': new Date().getTime(),event:'gtm.js'}
+    );var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','googleTagManagerDataLayer', "GTM-TP845S");
+  }
+</script>
+<script>
+  loadGTM();
+</script>
+
+</head>
+
+<script>
+  !function(options){
+    window.Strava = window.Strava || {};
+    var _enabled = true;
+    var _options = options;
+    var _snowplowReady = null;
+  
+    window.Strava.ExternalAnalytics = window.Strava.ExternalAnalytics || (
+      {
+        isEnabled: function() {
+          return _enabled;
+        },
+        isDebug: function() {
+          return _options.debug;
+        },
+        track: function() {
+        },
+        trackV2: function(event) {
+          var eventData = {
+            'category': event.category,
+            'page': event.page,
+            'action': event.action,
+            'element': event.element || null,
+            'properties': event.properties || {}
+          }
+          if (this.isEnabled()) {
+            var a = snowplow('getUserId');
+            this.log("trackV2", {athleteId: a});
+            snowplow('trackSelfDescribingEvent', {
+              schema: 'iglu:com.strava/track/jsonschema/1-0-0',
+              data: eventData
+            });
+          } else {
+            if(this.isDebug()){
+              // toggle defined in - https://github.com/strava/active/blob/main/lib/strava/external_analytics.rb
+              // to turn on - Strava::ExternalAnalytics.turn_on_debug
+              // to turn off - Strava::ExternalAnalytics.turn_off_debug
+              !!console.table && console.table(eventData);
+            }
+          }
+        },
+        trackLink: function() {
+        },
+        trackForm: function() {
+        },
+        identifyV2: function () {
+        },
+        getExperimentContext: function(pageProperties) {
+          var experiment = ( pageProperties || {} ).experiment_info || {};
+          if (experiment.experiment_cohort && experiment.experiment_name) {
+            this.log('found experiment with values', experiment);
+            return {
+              schema: 'iglu:com.strava/web_experiment/jsonschema/1-0-0',
+              data: {
+                experiment_name: experiment.experiment_name,
+                cohort: experiment.experiment_cohort,
+                forced: experiment.experiment_forced === true
+              }
+            };
+          } else {
+            return null;
+          }
+        },
+        page: function(pageProperties) {
+          if(this.isEnabled()) {
+            snowplow('trackPageView');
+          }
+        },
+        identify: function(athleteId, options, eventName) {
+          if (this.isEnabled()) {
+            this.log("identify user", {athleteId: athleteId});
+            var properties = options || {}
+            properties.athlete_id = athleteId;
+            var eventData = {
+              'category': 'identify',
+              'page': null,
+              'action': eventName,
+              'element': null,
+              'properties': properties
+            };
+            snowplow('trackSelfDescribingEvent', {
+              schema: 'iglu:com.strava/track/jsonschema/1-0-0',
+              data: eventData
+            });
+          }
+        },
+        reset: function() {
+          if(this.isEnabled()) {
+            this.log("reseting athlete id",{});
+            snowplow('setUserId', null)
+            var spCookie = document.cookie.match('_sp_id\\.[a-f0-9]+')
+            if(spCookie != null) {
+              document.cookie = spCookie[0] + "= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+            }
+          }
+        },
+        setup: function(athleteId, pageProperties) {
+          if(this.isEnabled()) {
+            this.log("setup snowplow", {athleteId: athleteId});
+            snowplow("newTracker", "cf", "c.strava.com", {
+              appId: "strava-web",
+              platform: "web"
+            });
+            snowplow('setUserId', athleteId);
+            var experimentContext = this.getExperimentContext(pageProperties);
+            if (experimentContext) {
+              snowplow('addGlobalContexts', [experimentContext]);
+            }
+            snowplow('enableFormTracking');
+          }
+        },
+        getDomainUserId: function() {
+          var d = jQuery.Deferred();
+          if (this.isEnabled()) {
+            if (!_snowplowReady) {
+              _snowplowReady = jQuery.Deferred();
+              snowplow(function(){
+                _snowplowReady.resolve(this.cf.getDomainUserId());
+              });
+            }
+            _snowplowReady.always(function(getDomainUserId){
+              d.resolve(getDomainUserId);
+            });
+          } else {
+            d.reject(null);
+          }
+          return d;
+        },
+        log: function(message, values) {
+          if(this.isDebug()) {
+            console.log(message, 'background-color: yellow; color: blue; font-size: medium;', values);
+          }
+        },
+        debug: function(value) {
+          _options.debug = value;
+        }
+      }
+    )
+  }({
+    is_mobile: false,
+    os: "",
+    debug: false,
+    athlete_id: 30541205,
+    locale: "en-GB"
+  });
+</script>
+
+<script>
+  !function(){
+    var analytics = window.analytics = window.analytics || [];
+    if(analytics.invoked) {
+      window.console && console.error && console.error("Segment snippet included twice.");
+    } else {
+      (function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://d3nn82uaxijpm6.cloudfront.net/8f96b1247cf4359f8fec.js","snowplow"));
+      var pageProperties = null;
+      var athleteId = 30541205;
+      Strava.ExternalAnalytics.setup(athleteId, pageProperties);
+      Strava.ExternalAnalytics.page(pageProperties);
+    }
+  }();
+</script>
+
+<script>
+  !function(debug){
+    window.Strava = window.Strava || {};
+    var _enabled = true;
+    var _debug = !!debug;
+    var _branchData = null;
+  
+    window.Strava.BranchIO = window.Strava.BranchIO || (
+      {
+        isEnabled: function() {
+          return _enabled;
+        },
+        isDebug: function() {
+          return _debug;
+        },
+        dataToLocalStorage: function() {
+          if (!_branchData) {
+            _branchData = new Strava.BranchAnalytics.BranchData();
+          }
+  
+          var d = this.data()
+          var that = this;
+          d.done(function(data) {
+            that.log('storing data %o to local storage', data)
+            _branchData.data(data)
+          });
+          d.fail(function(message) {
+            that.log('failed to retrieve data from branch');
+            _branchData.data({})
+          });
+          return d;
+        },
+        createLink: function(options) {
+          var d = jQuery.Deferred();
+          var data = null;
+          const that = this;
+          var callback = function(e, l) {
+            if (!e) {
+              d.resolve(l);
+            } else {
+              d.reject(e);
+            }
+          }
+  
+          Strava.ExternalAnalytics
+            .getDomainUserId()
+            .always(function(domainUserId){
+              if (domainUserId) {
+                options.data['domainUserId'] = domainUserId;
+              }
+  
+              if(that.isEnabled()) {
+                branch.link(options, callback);
+              };
+          });
+  
+          return d;
+        },
+        dataFromLocalStorage: function() {
+          if (!_branchData) {
+            _branchData = new Strava.BranchAnalytics.BranchData();
+          }
+          return _branchData.data();
+        },
+        clearLocalStorage: function() {
+          if (!_branchData) {
+            _branchData = new Strava.BranchAnalytics.BranchData();
+          }
+          _branchData.data({});
+        },
+        data: function(checkLocalStorage) {
+          var d = jQuery.Deferred();
+          var that = this;
+          var c = function(message, meta_data) {
+            var storedData = null;
+  
+            if(message) {
+              d.reject(message);
+            } else {
+              if (checkLocalStorage == true && (meta_data == null || meta_data.data == "" || meta_data.data == null)) {
+                storedData = that.dataFromLocalStorage();
+                that.clearLocalStorage();
+  
+                d.resolve(storedData);
+              } else {
+                d.resolve(meta_data);
+              }
+            }
+          };
+  
+          if(this.isEnabled()) {
+            branch.data(c);
+            this.log('%cdata (branch enabled)');
+          } else {
+            this.log('%cdata (branch disabled)');
+            d.resolve({});
+          }
+          return d;
+        },
+        identify: function(hashedAthleteId) {
+          var that = this;
+          var callback = function(error, data) {
+            if (error) {
+              console.log(error);
+            }
+          }
+          if(this.isEnabled() && hashedAthleteId) {
+            branch.setIdentity(hashedAthleteId, callback);
+            this.log('identifying athlete %o', hashedAthleteId);
+          }
+        },
+        logout: function() {
+          var that = this;
+          var callback = function(error) {
+            if (error) {
+              console.log(error);
+            }
+          }
+          branch.logout(callback);
+        },
+        track: function(eventName, metaData) {
+          var that = this;
+          var callback = function(error, data) {
+            if (error) {
+              console.log(error);
+            }
+          }
+          if(this.isEnabled()) {
+              this.log('tracking event - ', eventName);
+              branch.logEvent(eventName, metaData, callback);
+          }
+        },
+        log: function(message, values = '') {
+          if(this.isDebug()) {
+            console.log(`[branch] :::  ${message}`, values);
+          }
+        },
+        debug: function(value) {
+          _debug = value;
+        }
+      }
+    )
+  }(false);
+</script>
+
+<script>
+  function loadBranch() {
+    // load Branch
+    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener banner closeBanner closeJourney data deepview deepviewCta first init link logout removeListener setBranchViewData setIdentity track trackCommerceEvent logEvent disableTracking getBrowserFingerprintId crossPlatformIds lastAttributedTouchData setAPIResponseCallback qrCode".split(" "), 0);
+    
+    var options = {"metadata":{"external_identity_version":5,"next":false,"external_identity_hash":"c87fcfcb04500f524fb7bfeb23680bc18e485be781e7b9b19a1eefda98b2d35e"}}
+  
+    // clean legacy identities (non-hashed athlete ids)
+    var branchSessionIdentity = JSON.parse(sessionStorage.getItem('branch_session') || '{}').identity;
+    options.metadata.session_identity = branchSessionIdentity;
+  
+    if(branchSessionIdentity && branchSessionIdentity.length !== 64) {
+      Strava.BranchIO.log('clearing legacy branch session identity %o', branchSessionIdentity);
+      sessionStorage.removeItem('branch_session');
+      options.metadata.session_identity_cleared = true;
+    }else{
+      options.metadata.session_identity_cleared = false;
+    }
+    
+    // init Branch
+    branch.init("key_live_lmpPsfj2DP8CflI4rmzfiemerte7sgwm", options, (err, data) => {
+      const branchInitialized = new CustomEvent('BranchInitialized', { detail: { err, data } });
+      window.dispatchEvent(branchInitialized);
+  
+      var identity = data && data['identity'];
+      var hashedAthleteId = "c87fcfcb04500f524fb7bfeb23680bc18e485be781e7b9b19a1eefda98b2d35e";
+      
+      if(hashedAthleteId && identity && identity.length !== 64) {
+        Strava.BranchIO.log('purging branch session %o', identity);
+        Strava.BranchIO.track("web_session_reset", {identity: identity});
+        Strava.BranchIO.logout();
+        Strava.BranchIO.identify(hashedAthleteId);
+      }else{
+        if (hashedAthleteId) {
+          Strava.BranchIO.identify(hashedAthleteId);
+        }else{
+          Strava.BranchIO.log('no athlete to identify');
+          Strava.BranchIO.logout();
+        }
+      }
+    });
+  }
+</script>
+<script>
+  loadBranch();
+</script>
+
+</head>
+<body class='logged-in  feed3p0 old-login'>
+<noscript>
+<iframe height='0' src='//www.googletagmanager.com/ns.html?id=GTM-TP845S' style='display:none;visibility:hidden' width='0'></iframe>
+</noscript>
+
+
+
+<div class='view'>
+<header id='global-header'><!--
+deploy: 7cf3115b4228ae135f3d3aef268a974cb0d97fdb
+-->
+<!--[if lte IE 8]>
+<div class='alert alert-warning message warning mb-0 text-center'>
+<p>It looks like you're using a version of Internet Explorer that Strava no longer supports. Please <a href='http://www.microsoft.com/en-us/download/ie.aspx?q=internet+explorer'>upgrade your web browser</a> &mdash; <a href='https://strava.zendesk.com/entries/20420212-Supported-Browsers-on-Strava'>Learn more</a>.</p>
+</div>
+<![endif]-->
+<nav class='nav-bar container collapsable-nav' role='navigation'>
+<div title="Return to the Strava home page" class="branding"><a class="branding-content" href="/"><span class="sr-only">Strava</span></a></div>
+<!-- / Nav Menu Button -->
+<a href="#container-nav" aria-expanded="false" aria-controls="container-nav" data-toggle="collapse" class="btn btn-default btn-mobile-menu" role="button">Menu</a>
+<div class='nav-container collapse' id='container-nav'>
+<form id='global-search-bar'>
+<button class='btn btn-default btn-icon btn-icon-right' id='open-global-search-button' title='Search' type='button'>
+<span class="app-icon-wrapper  "><span class="app-icon icon-search icon-lg icon-dark"></span></span>
+</button>
+<div class='form-group bottomless global-search-hidden' id='global-search-form-group'>
+<div class='dropdown' id='global-search-filter'>
+<button aria-expanded='false' aria-haspopup='true' class='btn btn-default btn-icon btn-icon-right' data-toggle='dropdown' data-value='athletes'>
+<span class='btn-label'>Athletes</span>
+<span class="app-icon-wrapper  "><span class="app-icon icon-caret-down icon-dark icon-sm"></span></span>
+</button>
+<ul aria-labeledby='global-search-filter' class='dropdown-menu' role='menu'>
+<li>
+<div class='clickable' data-value='activities'>
+Activities
+</div>
+</li>
+<li>
+<div class='clickable' data-value='athletes'>
+Athletes
+</div>
+</li>
+<li>
+<div class='clickable' data-value='clubs'>
+Clubs
+</div>
+</li>
+<li>
+<div class='clickable' data-value='segments'>
+Segments
+</div>
+</li>
+</ul>
+</div>
+<div class='input-group'>
+<input class='form-control' data-search-filter='athletes' id='global-search-field' placeholder='Search' type='text'>
+<button class='btn btn-white btn-icon btn-icon-only' id='global-search-button' title='Search'>
+<span class="app-icon-wrapper  "><span class="app-icon icon-search icon-lg icon-dark"></span></span>
+</button>
+<button class='btn btn-white btn-icon btn-icon-only' id='global-search-cancel' title='Cancel'>
+<span class="app-icon-wrapper  "><span class="app-icon icon-remove icon-sm icon-dark"></span></span>
+</button>
+</div>
+<div id='global-search-autocomplete-anchor'>
+<div id='global-search-autocomplete-container'></div>
+</div>
+</div>
+</form>
+
+<ul class='global-nav nav-group'>
+<li class='nav-item drop-down-menu accessible-nav-dropdown' data-log-category='dashboard' data-log-page='dashboard'>
+<a class="selection nav-link accessible-nav-link" href="/dashboard">Dashboard
+</a><button aria-haspopup class='selection nav-link accessible-nav-arrow' data-toggle='dropdown ' id='dashboard-dropdown-arrow' title='Expand dashboard menu'>
+<span class="app-icon-wrapper  "><span class="app-icon icon-caret-down icon-dark"></span></span>
+</button>
+<ul aria-labelledby='dashboard-dropdown-arrow' class='options' role='menu'>
+<li class=''>
+<a href="/dashboard">Activity Feed</a>
+</li>
+<li class=''>
+<a href="/clubs/search">Clubs</a>
+</li>
+<li class=''>
+<a href="/athlete/segments/starred">My Segments</a>
+</li>
+<li class=''>
+<a href="/athlete/routes">My Routes</a>
+</li>
+<li class='premium opt-group'>
+<div class='text-caption4 subscription-callout'>
+SUBSCRIPTION
+</div>
+<ul>
+<li class='' data-log-element='my_goals'>
+<a href="/athlete/goals">My Goals
+</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='nav-item drop-down-menu accessible-nav-dropdown' data-log-category='training' data-log-page='training'>
+<a class="selection nav-link accessible-nav-link" href="/athletes/30541205/training/log">Training
+</a><button aria-haspopup class='selection nav-link accessible-nav-arrow' data-toggle='dropdown ' id='dashboard-dropdown-arrow' title='Expand training menu'>
+<span class="app-icon-wrapper  "><span class="app-icon icon-caret-down icon-dark"></span></span>
+</button>
+<ul aria-labelledby='dashboard-dropdown-arrow' class='options' role='menu'>
+<li class=''>
+<a href="/athlete/calendar">Training Calendar</a>
+</li>
+<li class=''>
+<a href="/athlete/training">My Activities</a>
+</li>
+<li class='premium opt-group'>
+<div class='text-caption4 subscription-callout'>
+SUBSCRIPTION
+</div>
+<ul>
+<li>
+<a href="/athletes/30541205/training/log">Training Log</a>
+</li>
+<li class='' data-log-element='training_plans'>
+<a href="/training-plans">Training Plans
+</a></li>
+<li class='' data-log-element='power_curve'>
+<a href="/athlete/analysis">Power Curve
+</a></li>
+<li class='' data-log-element='fitness_and_freshness'>
+<a href="/athlete/fitness">Fitness &amp; Freshness
+</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class='nav-item'>
+<a class="nav-link" href="/maps">Maps
+</a></li>
+<li class='nav-item'>
+<a class="nav-link" href="/challenges">Challenges
+</a></li>
+</ul>
+
+<ul class='user-nav nav-group'>
+<li class='nav-item upgrade'>
+<a class="experiment btn btn-sm btn-primary" href="/gift?cta=gift&amp;element=link&amp;origin=global_nav"><img alt="Give a Gift" class="mr-sm" src="https://d3nn82uaxijpm6.cloudfront.net/assets/gifts/gift_white-15a171b48ae7486a2464618d8a78faa75fdcc859635df5fa71c0d72d5dc2d50d.svg" />
+Give a Gift
+</a></li>
+<li class='nav-item' id='notifications'>
+<div id='notifications-loading-placeholder' style='width: 46px;'></div>
+<link rel="preload" href="https://web-assets.strava.com/assets/federated/notifications/remoteEntry.js?t=2024-11-18T05:33:52+00:00" as="script">
+<div data-is-published='' data-react-class='Microfrontend' data-react-props='{&quot;url&quot;:&quot;https://web-assets.strava.com/assets/federated/notifications/remoteEntry.js?t=2024-11-18T05:33:52+00:00&quot;,&quot;scope&quot;:&quot;strava_notifications&quot;,&quot;component&quot;:&quot;./Notifications&quot;,&quot;appContext&quot;:{},&quot;experiments&quot;:{}}' style='height: 100%'></div>
+
+</li>
+<li class='nav-item drop-down-menu user-menu accessible-nav-dropdown'>
+<a class='nav-link selection accessible-nav-link' href='/athletes/30541205'>
+<div class='avatar avatar-athlete'>
+<img alt="Domen" class="avatar-img" src="https://dgalywyr863hv.cloudfront.net/pictures/athletes/30541205/31841726/3/medium.jpg" />
+</div>
+<span class='athlete-name'>
+Domen Preloznik
+</span>
+</a>
+<button aria-haspopup class='selection nav-link accessible-nav-arrow' data-toggle='dropdown ' id='dashboard-dropdown-arrow' title='Expand profile menu'>
+<span class="app-icon-wrapper  "><span class="app-icon icon-caret-down icon-dark"></span></span>
+</button>
+<ul class='options'>
+<li class='featured'>
+<link rel="preload" href="https://web-assets.strava.com/assets/federated/find-and-invite-friends/remoteEntry.js?t=2024-11-18T05:33:52+00:00" as="script">
+<div data-is-published='' data-react-class='Microfrontend' data-react-props='{&quot;url&quot;:&quot;https://web-assets.strava.com/assets/federated/find-and-invite-friends/remoteEntry.js?t=2024-11-18T05:33:52+00:00&quot;,&quot;scope&quot;:&quot;strava_find_and_invite_friends&quot;,&quot;component&quot;:&quot;./FindAndInviteFriends&quot;,&quot;appContext&quot;:{&quot;source&quot;:&quot;header_menu&quot;,&quot;googleClientId&quot;:&quot;541588808765.apps.googleusercontent.com&quot;,&quot;fbAppId&quot;:284597785309,&quot;fbVersion&quot;:&quot;v7.0&quot;,&quot;currentAthlete&quot;:{&quot;email&quot;:&quot;narnij222@gmail.com&quot;,&quot;id&quot;:30541205},&quot;mocked&quot;:false,&quot;defaultTabIndex&quot;:0,&quot;locale&quot;:&quot;en-GB&quot;},&quot;experiments&quot;:{}}'></div>
+
+
+</li>
+<li><a href="/athletes/30541205">My Profile</a></li>
+<li><a href="/settings/profile">Settings</a></li>
+<li><a href="/apps">Apps</a></li>
+<li><a href="/subscription/perks">Subscriber Perks</a></li>
+<li><a rel="nofollow" data-method="delete" href="/session">Log Out</a></li>
+</ul>
+</li>
+<li class='nav-item drop-down-menu upload-menu'>
+<a class='nav-link selection' href='/upload'>
+<div class='upload-button-wrapper'>
+<div class='upload-button icon-upload app-icon icon-sm'>
+Upload
+</div>
+</div>
+</a>
+<ul class='options'>
+<li>
+<a href='/upload'>
+<span class='upload-activity app-icon icon-upload-activity'></span>
+Upload activity
+</a>
+</li>
+<li>
+<a href='/upload/manual'>
+<span class='upload-activity-manual app-icon icon-upload-activity-manual'></span>
+Add manual entry
+</a>
+</li>
+<li>
+<a href='/maps/create'>
+<span class='upload-route app-icon icon-upload-route'></span>
+Create route
+</a>
+</li>
+<li>
+<a href='/athletes/30541205/posts/new'>
+<span class='create-post app-icon icon-create-post'></span>
+Create post
+</a>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</nav>
+</header>
+
+<div class='messages' id='system-messages-js'>
+<div class='hidden alert warning' id='ie-deprecation-message'>
+<div class='alert-message'>
+It looks like you're using a browser that Strava no longer supports. <a href='https://support.strava.com/hc/en-us/articles/216917637-Supported-Browsers-on-Strava'>Learn more</a>.
+</div>
+</div>
+
+
+</div>
+
+
+<div class='messages'>
+<div class='message page-status-message' style='display:none;'>Loading &hellip;</div>
+</div>
+<div class='page container'><div id='header-photos'>
+
+<div data-is-published='' data-react-class='AthleteProfileHeaderMediaGrid' data-react-props='{&quot;items&quot;:[{&quot;photo_id&quot;:&quot;9e853e06-6df7-4b82-bae1-aafcf5b08933&quot;,&quot;media_type&quot;:1,&quot;activity_id&quot;:12357430718,&quot;post_id&quot;:null,&quot;activity_name_escaped&quot;:&quot;Kranjska Gora&quot;,&quot;caption_escaped&quot;:&quot;&quot;,&quot;thumbnail&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/X4pgaSSGt4j26bxOx0ZaQ6rLyKorTGJ7OuKuQP7ypAY-96x128.jpg&quot;,&quot;large&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/X4pgaSSGt4j26bxOx0ZaQ6rLyKorTGJ7OuKuQP7ypAY-1536x2048.jpg&quot;,&quot;video&quot;:null,&quot;duration&quot;:null,&quot;lat&quot;:null,&quot;lng&quot;:null,&quot;native&quot;:true,&quot;owner_id&quot;:30541205,&quot;viewing_athlete_id&quot;:30541205,&quot;editable&quot;:true,&quot;activity&quot;:{&quot;id&quot;:12357430718,&quot;athlete_id&quot;:30541205,&quot;name&quot;:&quot;Kranjska Gora&quot;,&quot;description&quot;:&quot;&quot;,&quot;elapsed_time&quot;:12651,&quot;moving_time&quot;:9815,&quot;elev_gain&quot;:112.0,&quot;distance&quot;:12285.0,&quot;type&quot;:&quot;Walk&quot;,&quot;private&quot;:0,&quot;start_date&quot;:&quot;2024-09-08T08:05:00Z&quot;},&quot;dimensions&quot;:{&quot;large&quot;:{&quot;height&quot;:2048,&quot;width&quot;:1536},&quot;thumbnail&quot;:{&quot;height&quot;:128,&quot;width&quot;:96}},&quot;is_sponsored_photo&quot;:false,&quot;enhanced_photo&quot;:null},{&quot;photo_id&quot;:&quot;11d59e6f-86b0-4138-8814-d23ded10683b&quot;,&quot;media_type&quot;:1,&quot;activity_id&quot;:12349144641,&quot;post_id&quot;:null,&quot;activity_name_escaped&quot;:&quot;Tamar&quot;,&quot;caption_escaped&quot;:&quot;&quot;,&quot;thumbnail&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/tN5-ygr35z1v1s9JiRMEFwBlRodltCesS3VpNd5VOyo-96x128.jpg&quot;,&quot;large&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/tN5-ygr35z1v1s9JiRMEFwBlRodltCesS3VpNd5VOyo-1536x2048.jpg&quot;,&quot;video&quot;:null,&quot;duration&quot;:null,&quot;lat&quot;:null,&quot;lng&quot;:null,&quot;native&quot;:true,&quot;owner_id&quot;:30541205,&quot;viewing_athlete_id&quot;:30541205,&quot;editable&quot;:true,&quot;activity&quot;:{&quot;id&quot;:12349144641,&quot;athlete_id&quot;:30541205,&quot;name&quot;:&quot;Tamar&quot;,&quot;description&quot;:&quot;&quot;,&quot;elapsed_time&quot;:10236,&quot;moving_time&quot;:6272,&quot;elev_gain&quot;:208.0,&quot;distance&quot;:7640.68,&quot;type&quot;:&quot;Walk&quot;,&quot;private&quot;:0,&quot;start_date&quot;:&quot;2024-09-07T10:13:47Z&quot;},&quot;dimensions&quot;:{&quot;large&quot;:{&quot;height&quot;:2048,&quot;width&quot;:1536},&quot;thumbnail&quot;:{&quot;height&quot;:128,&quot;width&quot;:96}},&quot;is_sponsored_photo&quot;:false,&quot;enhanced_photo&quot;:null},{&quot;photo_id&quot;:&quot;5649e165-8d75-41f4-b65a-e69e0ae4110a&quot;,&quot;media_type&quot;:1,&quot;activity_id&quot;:12238225453,&quot;post_id&quot;:null,&quot;activity_name_escaped&quot;:&quot;Robanov kot&quot;,&quot;caption_escaped&quot;:&quot;&quot;,&quot;thumbnail&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/fqAL1au2HSh3KEItozGsDUrIHKkoVpQkg1eljOpJQSY-96x128.jpg&quot;,&quot;large&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/fqAL1au2HSh3KEItozGsDUrIHKkoVpQkg1eljOpJQSY-1536x2048.jpg&quot;,&quot;video&quot;:null,&quot;duration&quot;:null,&quot;lat&quot;:null,&quot;lng&quot;:null,&quot;native&quot;:true,&quot;owner_id&quot;:30541205,&quot;viewing_athlete_id&quot;:30541205,&quot;editable&quot;:true,&quot;activity&quot;:{&quot;id&quot;:12238225453,&quot;athlete_id&quot;:30541205,&quot;name&quot;:&quot;Robanov kot&quot;,&quot;description&quot;:&quot;With Wifey&quot;,&quot;elapsed_time&quot;:15672,&quot;moving_time&quot;:9075,&quot;elev_gain&quot;:391.0,&quot;distance&quot;:10114.4,&quot;type&quot;:&quot;Walk&quot;,&quot;private&quot;:0,&quot;start_date&quot;:&quot;2024-08-25T08:08:02Z&quot;},&quot;dimensions&quot;:{&quot;large&quot;:{&quot;height&quot;:2048,&quot;width&quot;:1536},&quot;thumbnail&quot;:{&quot;height&quot;:128,&quot;width&quot;:96}},&quot;is_sponsored_photo&quot;:false,&quot;enhanced_photo&quot;:null},{&quot;photo_id&quot;:&quot;0c44c4d7-8c9d-461e-ba4e-9784a48477bc&quot;,&quot;media_type&quot;:1,&quot;activity_id&quot;:12238225453,&quot;post_id&quot;:null,&quot;activity_name_escaped&quot;:&quot;Robanov kot&quot;,&quot;caption_escaped&quot;:&quot;&quot;,&quot;thumbnail&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/VTFmRKqsC7u5dSsr9iDuT6rq7BnR0ACdhIQjxqsT0Ho-128x96.jpg&quot;,&quot;large&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/VTFmRKqsC7u5dSsr9iDuT6rq7BnR0ACdhIQjxqsT0Ho-2048x1536.jpg&quot;,&quot;video&quot;:null,&quot;duration&quot;:null,&quot;lat&quot;:null,&quot;lng&quot;:null,&quot;native&quot;:true,&quot;owner_id&quot;:30541205,&quot;viewing_athlete_id&quot;:30541205,&quot;editable&quot;:true,&quot;activity&quot;:{&quot;id&quot;:12238225453,&quot;athlete_id&quot;:30541205,&quot;name&quot;:&quot;Robanov kot&quot;,&quot;description&quot;:&quot;With Wifey&quot;,&quot;elapsed_time&quot;:15672,&quot;moving_time&quot;:9075,&quot;elev_gain&quot;:391.0,&quot;distance&quot;:10114.4,&quot;type&quot;:&quot;Walk&quot;,&quot;private&quot;:0,&quot;start_date&quot;:&quot;2024-08-25T08:08:02Z&quot;},&quot;dimensions&quot;:{&quot;large&quot;:{&quot;height&quot;:1536,&quot;width&quot;:2048},&quot;thumbnail&quot;:{&quot;height&quot;:96,&quot;width&quot;:128}},&quot;is_sponsored_photo&quot;:false,&quot;enhanced_photo&quot;:null},{&quot;photo_id&quot;:&quot;4dd41264-b792-4e4a-8735-dcfde4607c0e&quot;,&quot;media_type&quot;:1,&quot;activity_id&quot;:11773367108,&quot;post_id&quot;:null,&quot;activity_name_escaped&quot;:&quot;Italy #4 Bormio - Stelvio&quot;,&quot;caption_escaped&quot;:&quot;&quot;,&quot;thumbnail&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/dZpJ4zCsOKm6GS2LcIwEvxt45uFxvm1hX1B2uNGf3Z4-96x128.jpg&quot;,&quot;large&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/dZpJ4zCsOKm6GS2LcIwEvxt45uFxvm1hX1B2uNGf3Z4-1536x2048.jpg&quot;,&quot;video&quot;:null,&quot;duration&quot;:null,&quot;lat&quot;:null,&quot;lng&quot;:null,&quot;native&quot;:true,&quot;owner_id&quot;:30541205,&quot;viewing_athlete_id&quot;:30541205,&quot;editable&quot;:true,&quot;activity&quot;:{&quot;id&quot;:11773367108,&quot;athlete_id&quot;:30541205,&quot;name&quot;:&quot;Italy #4 Bormio - Stelvio&quot;,&quot;description&quot;:&quot;&quot;,&quot;elapsed_time&quot;:11525,&quot;moving_time&quot;:10307,&quot;elev_gain&quot;:1660.0,&quot;distance&quot;:60414.6,&quot;type&quot;:&quot;Ride&quot;,&quot;private&quot;:0,&quot;start_date&quot;:&quot;2024-06-30T06:57:20Z&quot;},&quot;dimensions&quot;:{&quot;large&quot;:{&quot;height&quot;:2048,&quot;width&quot;:1536},&quot;thumbnail&quot;:{&quot;height&quot;:128,&quot;width&quot;:96}},&quot;is_sponsored_photo&quot;:false,&quot;enhanced_photo&quot;:null},{&quot;photo_id&quot;:&quot;4b85cfe4-9697-4f56-bf4b-85c981eead1d&quot;,&quot;media_type&quot;:1,&quot;activity_id&quot;:11773367108,&quot;post_id&quot;:null,&quot;activity_name_escaped&quot;:&quot;Italy #4 Bormio - Stelvio&quot;,&quot;caption_escaped&quot;:&quot;&quot;,&quot;thumbnail&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/_79kyVo-OqD1YriGdV1VxBevlWBF8pZTwpLy46DCPzo-128x96.jpg&quot;,&quot;large&quot;:&quot;https://dgtzuqphqg23d.cloudfront.net/_79kyVo-OqD1YriGdV1VxBevlWBF8pZTwpLy46DCPzo-2048x1536.jpg&quot;,&quot;video&quot;:null,&quot;duration&quot;:null,&quot;lat&quot;:null,&quot;lng&quot;:null,&quot;native&quot;:true,&quot;owner_id&quot;:30541205,&quot;viewing_athlete_id&quot;:30541205,&quot;editable&quot;:true,&quot;activity&quot;:{&quot;id&quot;:11773367108,&quot;athlete_id&quot;:30541205,&quot;name&quot;:&quot;Italy #4 Bormio - Stelvio&quot;,&quot;description&quot;:&quot;&quot;,&quot;elapsed_time&quot;:11525,&quot;moving_time&quot;:10307,&quot;elev_gain&quot;:1660.0,&quot;distance&quot;:60414.6,&quot;type&quot;:&quot;Ride&quot;,&quot;private&quot;:0,&quot;start_date&quot;:&quot;2024-06-30T06:57:20Z&quot;},&quot;dimensions&quot;:{&quot;large&quot;:{&quot;height&quot;:1536,&quot;width&quot;:2048},&quot;thumbnail&quot;:{&quot;height&quot;:96,&quot;width&quot;:128}},&quot;is_sponsored_photo&quot;:false,&quot;enhanced_photo&quot;:null}],&quot;isLoggedIn&quot;:true,&quot;profileType&quot;:&quot;profile_own&quot;,&quot;experiments&quot;:{}}' style='height: 312px;'></div>
+
+</div>
+<div class='profile-heading profile section'>
+<div class='avatar avatar-athlete avatar-xl' title='Domen Preloznik'>
+<div class="avatar-content"><div class='avatar-img-wrapper'>
+<img class='avatar-img' src='https://dgalywyr863hv.cloudfront.net/pictures/athletes/30541205/31841726/3/large.jpg'>
+</div>
+</div></div>
+
+<div class='row'>
+<div class='spans5'>
+<h1 class='text-title1 athlete-name' title='Member Since: 6 May 2018'>Domen Preloznik</h1>
+<div class='athlete-title'>
+<div class='app-icon icon-xs icon-premium mr-sm'></div>
+Subscriber
+</div>
+<div class='location'>
+<div class='app-icon icon-location icon-xs mr-sm'></div>
+Celje, SLOVENIA, Slovenia
+</div>
+
+</div>
+<div class='spans10 offset1'><section class='activity-summary-v2'>
+<div class='activity-count'>
+<h3 class='count-header'>Last 4 Weeks</h3>
+<div class='count-total'>
+<div class='count text-display5'>15</div>
+<div class='count-label'>Total Activities</div>
+</div>
+</div>
+<div class='activity-calendar'>
+<h3 class='vh'>Calendar</h3>
+<table>
+<caption class='vh'>Last four weeks of activity</caption>
+<thead>
+<tr>
+<th scope='col'>
+<div class='weekday'>M</div>
+</th>
+<th scope='col'>
+<div class='weekday'>T</div>
+</th>
+<th scope='col'>
+<div class='weekday'>W</div>
+</th>
+<th scope='col'>
+<div class='weekday'>T</div>
+</th>
+<th scope='col'>
+<div class='weekday'>F</div>
+</th>
+<th scope='col'>
+<div class='weekday'>S</div>
+</th>
+<th scope='col'>
+<div class='weekday'>S</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='day-wrapper'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>28</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>29</span>
+<span class='activity-indicator' style='height: 15px; width: 15px;'></span>
+<div class='vh'>2<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>30</span>
+<span class='activity-indicator' style='height: 11px; width: 11px;'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 41<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>31</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>1</span>
+<span class='activity-indicator' style='height: 12px; width: 12px;'></span>
+<div class='vh'>1<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>2</span>
+<span class='activity-indicator' style='height: 11px; width: 11px;'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 53<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>3</span>
+<span class='activity-indicator' style='height: 12px; width: 12px;'></span>
+<div class='vh'>1<abbr class='unit' title='hour'>h</abbr> 10<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+</tr>
+<tr>
+<td class='day-wrapper'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>4</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>5</span>
+<span class='activity-indicator' style='height: 12px; width: 12px;'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 58<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>6</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>7</span>
+<span class='activity-indicator' style='height: 12px; width: 12px;'></span>
+<div class='vh'>1<abbr class='unit' title='hour'>h</abbr> 3<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>8</span>
+<span class='activity-indicator' style='height: 12px; width: 12px;'></span>
+<div class='vh'>1<abbr class='unit' title='hour'>h</abbr> 7<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>9</span>
+<span class='activity-indicator' style='height: 12px; width: 12px;'></span>
+<div class='vh'>1<abbr class='unit' title='hour'>h</abbr> 3<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>10</span>
+<span class='activity-indicator' style='height: 12px; width: 12px;'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 57<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+</tr>
+<tr>
+<td class='day-wrapper'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>11</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>12</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>13</span>
+<span class='activity-indicator' style='height: 12px; width: 12px;'></span>
+<div class='vh'>1<abbr class='unit' title='hour'>h</abbr> 9<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>14</span>
+<span class='activity-indicator' style='height: 11px; width: 11px;'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 55<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>15</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>16</span>
+<span class='activity-indicator' style='height: 12px; width: 12px;'></span>
+<div class='vh'>1<abbr class='unit' title='hour'>h</abbr> 13<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper highlighted'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>17</span>
+<span class='activity-indicator' style='height: 10px; width: 10px;'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 34<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+</tr>
+<tr>
+<td class='day-wrapper today'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>18</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper future'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>19</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper future'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>20</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper future'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>21</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper future'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>22</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper future'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>23</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+<td class='day-wrapper future'>
+<a href="/athletes/30541205/training/log?feature=last-4-weeks-calendar"><span class='day'>24</span>
+<span class='activity-indicator'></span>
+<div class='vh'>0<abbr class='unit' title='hour'>h</abbr> 0<abbr class='unit' title='minute'>m</abbr></div>
+</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class='activity-breakdown'>
+<h3 class='vh'>Hourly breakdown per week</h3>
+<figure>
+<figcaption>
+<dl class='legend'>
+<dt class='label-ride'></dt>
+<dd>
+<div class='app-icon icon-sm icon-dark icon-ride-v3' title='Cycling'>
+<div class='vh'>Cycling</div>
+</div>
+</dd>
+<dt class='label-run'></dt>
+<dd>
+<div class='app-icon icon-sm icon-dark icon-run-v3' title='Running'>
+<div class='vh'>Running</div>
+</div>
+</dd>
+<dt class='label-swim'></dt>
+<dd>
+<div class='app-icon icon-sm icon-dark icon-swim-v3' title='Swimming'>
+<div class='vh'>Swimming</div>
+</div>
+</dd>
+<dt class='label-other'></dt>
+<dd>
+<div class='app-icon icon-sm icon-dark icon-other-v3' title='Other Activities'>
+<div class='vh'>Other Activities</div>
+</div>
+</dd>
+</dl>
+</figcaption>
+<dl class='week-breakdown'>
+<dt class='week vh'>
+Week 1
+</dt>
+<dd class='hours'>
+<ul class='hour-breakdown' style='width:65.0%'>
+<li class='sport cycling' style='width:84%' tabindex='0'>
+<div class='sport-breakdown'>
+<div class='vh'>Cycling</div>
+4<abbr class='unit' title='hour'>h</abbr> 49<abbr class='unit' title='minute'>m</abbr>
+</div>
+</li>
+<li class='sport other' style='width:16%' tabindex='0'>
+<div class='sport-breakdown'>
+<div class='vh'>Other Activities</div>
+0<abbr class='unit' title='hour'>h</abbr> 56<abbr class='unit' title='minute'>m</abbr>
+</div>
+</li>
+</ul>
+<div class='hour-total'>
+<span class="vh">Total</span> 5<abbr class='unit' title='hour'>h</abbr> 46<abbr class='unit' title='minute'>m</abbr>
+</div>
+</dd>
+<dt class='week vh'>
+Week 2
+</dt>
+<dd class='hours'>
+<ul class='hour-breakdown' style='width:58.5%'>
+<li class='sport cycling' style='width:100%' tabindex='0'>
+<div class='sport-breakdown'>
+<div class='vh'>Cycling</div>
+5<abbr class='unit' title='hour'>h</abbr> 10<abbr class='unit' title='minute'>m</abbr>
+</div>
+</li>
+</ul>
+<div class='hour-total'>
+<span class="vh">Total</span> 5<abbr class='unit' title='hour'>h</abbr> 10<abbr class='unit' title='minute'>m</abbr>
+</div>
+</dd>
+<dt class='week vh'>
+Week 3
+</dt>
+<dd class='hours'>
+<ul class='hour-breakdown' style='width:44.2%'>
+<li class='sport cycling' style='width:100%' tabindex='0'>
+<div class='sport-breakdown'>
+<div class='vh'>Cycling</div>
+3<abbr class='unit' title='hour'>h</abbr> 53<abbr class='unit' title='minute'>m</abbr>
+</div>
+</li>
+</ul>
+<div class='hour-total'>
+<span class="vh">Total</span> 3<abbr class='unit' title='hour'>h</abbr> 53<abbr class='unit' title='minute'>m</abbr>
+</div>
+</dd>
+<dt class='week vh'>
+Week 4
+</dt>
+<dd class='hours'>
+<div class='no-activity vh'>No activities</div>
+</dd>
+</dl>
+</figure>
+</div>
+</section>
+</div>
+</div>
+</div>
+
+<div class='row no-margins'>
+<div class='spans10 challenges-completed'>
+
+<ul aria-label='Athlete Profile Sections' class='tabs' role='navigation'>
+<li class=''>
+<a class='tab' href='/athletes/30541205' str-on='click' str-target-url='/athletes/30541205' str-trackable-id='97fcafd82e3afb043f556d37ba599d435917c098' str-type='self'>
+Overview
+</a>
+</li>
+<li class='selected'>
+<a class='tab trophy-case' href='/athletes/30541205/trophy-case' str-on='click' str-target-url='/athletes/30541205/trophy-case' str-trackable-id='6d834fd818dc709ec7d99f671326681e380eb0fd' str-type='self'>
+Trophy Case
+</a>
+</li>
+<li class='' data-cy='athlete-profile-following-tab'>
+<a class='tab' href='/athletes/30541205/follows?type=following'>
+Following
+</a>
+</li>
+<li class=''>
+<a class='tab' href='/athletes/30541205/segments/leader'>
+KOMs / CRs / Top 10s
+</a>
+</li>
+<li class=''>
+<a class='tab' href='/athletes/30541205/segments/local_legend'>
+Local Legends
+</a>
+</li>
+<li class=''>
+<a class="tab" href="/athletes/30541205/posts">Posts</a>
+</li>
+</ul>
+
+<div class='tab-content' id='trophy-case'>
+<h2>Trophy Case</h2>
+<div class='share-trophies'>
+Share this trophy case
+<span class='clickable share-fb btn-share' title='Share on Facebook'>
+<span class='facebook-icon share-sprite'>Facebook</span>
+</span>
+<a class='share-twitter btn-share' href='http://twitter.com/intent/tweet?text=Check%20out%20my%20%23trophycase%20and%20see%20all%20the%20%40Strava%20Challenges%20I%27ve%20completed.&amp;url=https%3A%2F%2Fwww.strava.com%2Fathletes%2F30541205%2Ftrophy-case' title='Share on Twitter'>
+<span class='gray twitter-icon share-sprite'>Twitter</span>
+</a>
+</div>
+
+<ul class='list-block-grid list-trophies'>
+<li class='centered' title='200 kilometers of riding in one month'>
+<a str-on="click" str-target-url="/challenges/February-Cycling-Challenge-2023" str-trackable-id="59e835f787673508432e959a585bd98360f8f85c" type="self" class="trophy-link" href="/challenges/February-Cycling-Challenge-2023"><img alt="February Cycling Challenge" data-trophy-challenge-id="3598" src="https://dgalywyr863hv.cloudfront.net/challenges/3598/3598-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/February-Cycling-Challenge-2023" str-trackable-id="59e835f787673508432e959a585bd98360f8f85c" type="self" href="/challenges/February-Cycling-Challenge-2023">February Cycling Challenge</a></h6>
+<time class='timestamp'>
+Feb 2023
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='800 kilometers of riding in one month'>
+<a str-on="click" str-target-url="/challenges/September-2021-Cycling-Challenge" str-trackable-id="44cc04fcc99dfb25613f00d93181712898940c4c" type="self" class="trophy-link" href="/challenges/September-2021-Cycling-Challenge"><img alt="September Cycling Consistency Challenge" data-trophy-challenge-id="2605" src="https://dgalywyr863hv.cloudfront.net/challenges/2605/2605-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/September-2021-Cycling-Challenge" str-trackable-id="44cc04fcc99dfb25613f00d93181712898940c4c" type="self" href="/challenges/September-2021-Cycling-Challenge">September Cycling Consistency Challenge</a></h6>
+<time class='timestamp'>
+Sep 2021
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='100 minutes. $100 billion for climate action.'>
+<a str-on="click" str-target-url="/challenges/The-Human-Race" str-trackable-id="bd625fe2b94c99324537b842ac654d518a23706d" type="self" class="trophy-link" href="/challenges/The-Human-Race"><img alt="#TheHumanRace" data-trophy-challenge-id="2570" src="https://dgalywyr863hv.cloudfront.net/challenges/2570/2570-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/The-Human-Race" str-trackable-id="bd625fe2b94c99324537b842ac654d518a23706d" type="self" href="/challenges/The-Human-Race">#TheHumanRace</a></h6>
+<time class='timestamp'>
+Aug 2021
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='Get moving for 15 mins a day, 5 days a week for 4 weeks'>
+<a str-on="click" str-target-url="/challenges/one-percent-better" str-trackable-id="359a0b1643828afc49e5d11a00cca5d1b5d830aa" type="self" class="trophy-link" href="/challenges/one-percent-better"><img alt="1% Better" data-trophy-challenge-id="2318" src="https://dgalywyr863hv.cloudfront.net/challenges/2318/2318-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/one-percent-better" str-trackable-id="359a0b1643828afc49e5d11a00cca5d1b5d830aa" type="self" href="/challenges/one-percent-better">1% Better</a></h6>
+<time class='timestamp'>
+May 2021
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='Climb 1000m and you could win a dream trip to ride in the Alps or Dolomites'>
+<a str-on="click" str-target-url="/challenges/Band-of-Climbers-Spring-Summits" str-trackable-id="112298e2a11ef01345ba23dd3065885d39ddd58f" type="self" class="trophy-link" href="/challenges/Band-of-Climbers-Spring-Summits"><img alt="Band of Climbers Spring Summits" data-trophy-challenge-id="2377" src="https://dgalywyr863hv.cloudfront.net/challenges/2377/2377-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/Band-of-Climbers-Spring-Summits" str-trackable-id="112298e2a11ef01345ba23dd3065885d39ddd58f" type="self" href="/challenges/Band-of-Climbers-Spring-Summits">Band of Climbers Spring Summits</a></h6>
+<time class='timestamp'>
+Apr 2021
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='400 kilometers of riding in one month'>
+<a str-on="click" str-target-url="/challenges/March-Cycling-Challenge-2021" str-trackable-id="8197d9a630cbb6a033903a3b66c8cdb38c92b37b" type="self" class="trophy-link" href="/challenges/March-Cycling-Challenge-2021"><img alt="March Cycling Challenge" data-trophy-challenge-id="2252" src="https://dgalywyr863hv.cloudfront.net/challenges/2252/2252-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/March-Cycling-Challenge-2021" str-trackable-id="8197d9a630cbb6a033903a3b66c8cdb38c92b37b" type="self" href="/challenges/March-Cycling-Challenge-2021">March Cycling Challenge</a></h6>
+<time class='timestamp'>
+Mar 2021
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='Ride 500km in eight days'>
+<a str-on="click" str-target-url="/challenges/rapha-festive-500-2020" str-trackable-id="3505cdea739c9f3f0f9b5bfc38e3a27c2b49fbeb" type="self" class="trophy-link" href="/challenges/rapha-festive-500-2020"><img alt="Rapha #Festive500" data-trophy-challenge-id="2128" src="https://dgalywyr863hv.cloudfront.net/challenges/2128/2128-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/rapha-festive-500-2020" str-trackable-id="3505cdea739c9f3f0f9b5bfc38e3a27c2b49fbeb" type="self" href="/challenges/rapha-festive-500-2020">Rapha #Festive500</a></h6>
+<time class='timestamp'>
+Dec 2020
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='100 km - indoors or outdoors'>
+<a str-on="click" str-target-url="/challenges/gran-fondo-December-2020" str-trackable-id="1612aab1c9c675d1b358fd234cb0caa98ffb59c9" type="self" class="trophy-link" href="/challenges/gran-fondo-December-2020"><img alt="December Gran Fondo" data-trophy-challenge-id="2100" src="https://dgalywyr863hv.cloudfront.net/challenges/d96c7fbc-2393-44e2-a23a-872208b11fe0-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/gran-fondo-December-2020" str-trackable-id="1612aab1c9c675d1b358fd234cb0caa98ffb59c9" type="self" href="/challenges/gran-fondo-December-2020">December Gran Fondo</a></h6>
+<time class='timestamp'>
+Dec 2020
+</time>
+<div class='effort'>140.2 km</div>
+</div>
+
+</li>
+<li class='centered' title='Get out there and ride, virtually'>
+<a str-on="click" str-target-url="/challenges/MAAP-In-The-Field" str-trackable-id="dfb76c9bc754b07ee1858d99c30f39a787f4e693" type="self" class="trophy-link" href="/challenges/MAAP-In-The-Field"><img alt="MAAP: In The Field" data-trophy-challenge-id="2018" src="https://dgalywyr863hv.cloudfront.net/challenges/2018/2018-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/MAAP-In-The-Field" str-trackable-id="dfb76c9bc754b07ee1858d99c30f39a787f4e693" type="self" href="/challenges/MAAP-In-The-Field">MAAP: In The Field</a></h6>
+<time class='timestamp'>
+Dec 2020
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='Choose one sport or mix it up with a combination of activity types to finish all 400 km in one month.'>
+<a str-on="click" str-target-url="/challenges/November-Challenge-400K-Your-Favorite-Way" str-trackable-id="78bef502e928ce86fe876f2b2f76d56ce79cd279" type="self" class="trophy-link" href="/challenges/November-Challenge-400K-Your-Favorite-Way"><img alt="November Favorite Way 400K" data-trophy-challenge-id="2074" src="https://dgalywyr863hv.cloudfront.net/challenges/2074/2074-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/November-Challenge-400K-Your-Favorite-Way" str-trackable-id="78bef502e928ce86fe876f2b2f76d56ce79cd279" type="self" href="/challenges/November-Challenge-400K-Your-Favorite-Way">November Favorite Way 400K</a></h6>
+<time class='timestamp'>
+Nov 2020
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='Stretch your legs and walk 50 kilometers this month.'>
+<a str-on="click" str-target-url="/challenges/November-Walk-Challenge" str-trackable-id="51d5c276fe2e5af514b798300bc3d836d79bbc9c" type="self" class="trophy-link" href="/challenges/November-Walk-Challenge"><img alt="November Walk Challenge" data-trophy-challenge-id="2081" src="https://dgalywyr863hv.cloudfront.net/challenges/2081/2081-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/November-Walk-Challenge" str-trackable-id="51d5c276fe2e5af514b798300bc3d836d79bbc9c" type="self" href="/challenges/November-Walk-Challenge">November Walk Challenge</a></h6>
+<time class='timestamp'>
+Nov 2020
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='Ride 150km to earn 25% off dhb apparel'>
+<a str-on="click" str-target-url="/challenges/dhb-Beat-The-Chill" str-trackable-id="67a3b7c779a7ef6805f452060948dcd9e7597b17" type="self" class="trophy-link" href="/challenges/dhb-Beat-The-Chill"><img alt="dhb Beat The Chill" data-trophy-challenge-id="2026" src="https://dgalywyr863hv.cloudfront.net/challenges/2026/2026-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/dhb-Beat-The-Chill" str-trackable-id="67a3b7c779a7ef6805f452060948dcd9e7597b17" type="self" href="/challenges/dhb-Beat-The-Chill">dhb Beat The Chill</a></h6>
+<time class='timestamp'>
+Oct 2020
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='600 kilometers of riding in one month'>
+<a str-on="click" str-target-url="/challenges/September-2020-Cycling-Challenge" str-trackable-id="e02c85577b4963dd07dc04849bd59855c804b7eb" type="self" class="trophy-link" href="/challenges/September-2020-Cycling-Challenge"><img alt="September Cycling Challenge" data-trophy-challenge-id="1953" src="https://dgalywyr863hv.cloudfront.net/challenges/47535cce-1b45-4c6c-85f4-6b1394ee103b-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/September-2020-Cycling-Challenge" str-trackable-id="e02c85577b4963dd07dc04849bd59855c804b7eb" type="self" href="/challenges/September-2020-Cycling-Challenge">September Cycling Challenge</a></h6>
+<time class='timestamp'>
+Sep 2020
+</time>
+<div class='effort'>694.5 km</div>
+</div>
+
+</li>
+<li class='centered' title='100 km - indoors or outdoors'>
+<a str-on="click" str-target-url="/challenges/gran-fondo-September-2020" str-trackable-id="e725e3d8ab74e6b5baa680a2ecd0dd9cd2782f9a" type="self" class="trophy-link" href="/challenges/gran-fondo-September-2020"><img alt="September Gran Fondo" data-trophy-challenge-id="1955" src="https://dgalywyr863hv.cloudfront.net/challenges/b42ded92-a544-4e56-b413-fb3973039947-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/gran-fondo-September-2020" str-trackable-id="e725e3d8ab74e6b5baa680a2ecd0dd9cd2782f9a" type="self" href="/challenges/gran-fondo-September-2020">September Gran Fondo</a></h6>
+<time class='timestamp'>
+Sep 2020
+</time>
+<div class='effort'>102.4 km</div>
+</div>
+
+</li>
+<li class='centered' title='100 km - indoors or outdoors'>
+<a str-on="click" str-target-url="/challenges/gran-fondo-June-2020" str-trackable-id="8593dba7177096c44b4fca7781807449d1406705" type="self" class="trophy-link" href="/challenges/gran-fondo-June-2020"><img alt="June Gran Fondo" data-trophy-challenge-id="1792" src="https://dgalywyr863hv.cloudfront.net/challenges/8389403a-2632-4e35-aee0-bda0eb3411d0-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/gran-fondo-June-2020" str-trackable-id="8593dba7177096c44b4fca7781807449d1406705" type="self" href="/challenges/gran-fondo-June-2020">June Gran Fondo</a></h6>
+<time class='timestamp'>
+Jun 2020
+</time>
+<div class='effort'>137.7 km</div>
+</div>
+
+</li>
+<li class='centered' title='Fifteen hours of riding in one month'>
+<a str-on="click" str-target-url="/challenges/May-2020-Ride-On" str-trackable-id="ce168ebe07e33ad950c7cacb9eddd31cf23a2bc1" type="self" class="trophy-link" href="/challenges/May-2020-Ride-On"><img alt="May – Ride On Challenge" data-trophy-challenge-id="1758" src="https://dgalywyr863hv.cloudfront.net/challenges/8070ea31-f68c-46a4-888b-2f965c86b3fb-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/May-2020-Ride-On" str-trackable-id="ce168ebe07e33ad950c7cacb9eddd31cf23a2bc1" type="self" href="/challenges/May-2020-Ride-On">May – Ride On Challenge</a></h6>
+<time class='timestamp'>
+May 2020
+</time>
+<div class='effort'>32<abbr class='unit' title='hour'>h</abbr> 4<abbr class='unit' title='minute'>m</abbr></div>
+</div>
+
+</li>
+<li class='centered' title='100 km - indoors or outdoors'>
+<a str-on="click" str-target-url="/challenges/gran-fondo-May-2020" str-trackable-id="61804c4fa5d0ee02b0e164c58237813f30cb319c" type="self" class="trophy-link" href="/challenges/gran-fondo-May-2020"><img alt="May Gran Fondo" data-trophy-challenge-id="1753" src="https://dgalywyr863hv.cloudfront.net/challenges/bf7d04e0-3576-4bec-85de-996e1ae72c5d-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/gran-fondo-May-2020" str-trackable-id="61804c4fa5d0ee02b0e164c58237813f30cb319c" type="self" href="/challenges/gran-fondo-May-2020">May Gran Fondo</a></h6>
+<time class='timestamp'>
+May 2020
+</time>
+<div class='effort'>115.8 km</div>
+</div>
+
+</li>
+<li class='centered' title='Run a 10k and shoot for a new PR.'>
+<a str-on="click" str-target-url="/challenges/April-10k-2020" str-trackable-id="87f992eff0f7f6b4f9036702f88a70a46aa26971" type="self" class="trophy-link" href="/challenges/April-10k-2020"><img alt="April 10K" data-trophy-challenge-id="1686" src="https://dgalywyr863hv.cloudfront.net/challenges/88354ff7-d042-46af-9b53-2efa3bb9fbfb-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/April-10k-2020" str-trackable-id="87f992eff0f7f6b4f9036702f88a70a46aa26971" type="self" href="/challenges/April-10k-2020">April 10K</a></h6>
+<time class='timestamp'>
+Apr 2020
+</time>
+<div class='effort'>5:25/km</div>
+</div>
+
+</li>
+<li class='centered' title='Keep active to win a Wahoo Indoor Training Setup.'>
+<a str-on="click" str-target-url="/challenges/LeCol-Keep-Active-Challenge" str-trackable-id="2d8ec1a1b1986a98d78f435e561d123e3c0ee8f0" type="self" class="trophy-link" href="/challenges/LeCol-Keep-Active-Challenge"><img alt="Le Col Keep Active Challenge" data-trophy-challenge-id="1722" src="https://dgalywyr863hv.cloudfront.net/challenges/1722/1722-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/LeCol-Keep-Active-Challenge" str-trackable-id="2d8ec1a1b1986a98d78f435e561d123e3c0ee8f0" type="self" href="/challenges/LeCol-Keep-Active-Challenge">Le Col Keep Active Challenge</a></h6>
+<time class='timestamp'>
+Apr 2020
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='Working out alone, in it together.'>
+<a str-on="click" str-target-url="/challenges/solodarity" str-trackable-id="e82169ab2b853c3ff86e13279f811e47dee5aa5f" type="self" class="trophy-link" href="/challenges/solodarity"><img alt="SOLOdarity" data-trophy-challenge-id="1744" src="https://dgalywyr863hv.cloudfront.net/challenges/1744/1744-logo-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/solodarity" str-trackable-id="e82169ab2b853c3ff86e13279f811e47dee5aa5f" type="self" href="/challenges/solodarity">SOLOdarity</a></h6>
+<time class='timestamp'>
+Apr 2020
+</time>
+<div class='effort'></div>
+</div>
+
+</li>
+<li class='centered' title='Have a long day in the saddle on a 100km ride.'>
+<a str-on="click" str-target-url="/challenges/gran-fondo-September-2019" str-trackable-id="4f6bc7082d185730bcdc0dd16443c86f3818e92b" type="self" class="trophy-link" href="/challenges/gran-fondo-September-2019"><img alt="September Gran Fondo" data-trophy-challenge-id="1471" src="https://dgalywyr863hv.cloudfront.net/challenges/6453da32-2d3d-476e-9333-0065e5630a2c-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/gran-fondo-September-2019" str-trackable-id="4f6bc7082d185730bcdc0dd16443c86f3818e92b" type="self" href="/challenges/gran-fondo-September-2019">September Gran Fondo</a></h6>
+<time class='timestamp'>
+Sep 2019
+</time>
+<div class='effort'>132.9 km</div>
+</div>
+
+</li>
+<li class='centered' title='Have a long day in the saddle on a 100km ride.'>
+<a str-on="click" str-target-url="/challenges/gran-fondo-08-2018" str-trackable-id="29bb4d5936292d64e14b52c0b1d457268f1b82ef" type="self" class="trophy-link" href="/challenges/gran-fondo-08-2018"><img alt="August Gran Fondo" data-trophy-challenge-id="1013" src="https://dgalywyr863hv.cloudfront.net/challenges/28d9c5f6-b2f3-49c1-80ea-a7a76c617ce8-100.png" />
+</a><div class='challenge-description'>
+<h6 class='mb-xs'><a str-on="click" str-target-url="/challenges/gran-fondo-08-2018" str-trackable-id="29bb4d5936292d64e14b52c0b1d457268f1b82ef" type="self" href="/challenges/gran-fondo-08-2018">August Gran Fondo</a></h6>
+<time class='timestamp'>
+Aug 2018
+</time>
+<div class='effort'>221.7 km</div>
+</div>
+
+</li>
+</ul>
+</div>
+</div>
+<div class='sidebar spans5 offset1'><div class='section'>
+<h3>Clubs</h3>
+<ul class='grid clubs'>
+<li class='verified'>
+<div class="avatar avatar-club tipsy-enabled image-only avatar-club avatar-md" title="Kofirajd"><a class="avatar-content" data-club-id="541175" href="/clubs/kofirajd"><img alt="Kofirajd" class="avatar-img" src="https://dgalywyr863hv.cloudfront.net/pictures/clubs/541175/12538635/6/medium.jpg" /></a></div>
+<span class="app-icon-wrapper  "><span title="Verified Club" class="app-icon icon-badge-verified icon-sm tipsy-enabled">Verified Club</span></span>
+</li>
+<li><div class="avatar avatar-club tipsy-enabled image-only avatar-club avatar-md" title="Kolesarski klub Atom"><a class="avatar-content" data-club-id="236058" href="/clubs/klub-atom"><img alt="Kolesarski klub Atom" class="avatar-img" src="https://dgalywyr863hv.cloudfront.net/pictures/clubs/236058/5200149/3/medium.jpg" /></a></div></li>
+<li><div class="avatar avatar-club tipsy-enabled image-only avatar-club avatar-md" title="ŠP - Šentjur Power"><a class="avatar-content" data-club-id="103014" href="/clubs/103014"><img alt="ŠP - Šentjur Power" class="avatar-img" src="https://dgalywyr863hv.cloudfront.net/pictures/clubs/103014/1782919/2/medium.jpg" /></a></div></li>
+</ul>
+</div>
+<div class='section connections'>
+<h3 class='mb-0'>Social Stats</h3>
+<ul class='inline-stats'>
+<li>
+<span class='label static-label'>Following</span>
+<a href="/athletes/30541205/follows?type=following">93</a>
+</li>
+<li>
+<span class='label static-label'>Followers</span>
+<a href="/athletes/30541205/follows?type=followers">124</a>
+</li>
+</ul>
+<div class='athletes-grid'>
+</div>
+</div>
+<div class='section comparison borderless'>
+<h3>
+My Stats
+<div class='spinner sm centered' style=''>
+      <div class='graphic'></div>
+      <span class='status'></span>
+    </div>
+</h3>
+</div>
+<div class='section'>
+<h3>Share Your Activities</h3>
+<p>Embed a Strava Widget on your blog.</p>
+<a class='button' id='embed-athlete-widget'>Share Your Activities</a>
+<div class='hidden' id='embed-athlete-widget-dialog'><div class='row'>
+<div class='spans8'>
+<h3 class='marginless'>Activity Widget</h3>
+<p>Displays your latest rides.</p>
+<section class='widget'><img src="https://d3nn82uaxijpm6.cloudfront.net/images/widget/profile_widgets_activity.png" /></section>
+<p>Embed the following code in your blog:</p>
+<textarea class='select-on-click' id='embed' readonly>&lt;iframe height=&#39;454&#39; width=&#39;300&#39; frameborder=&#39;0&#39; allowtransparency=&#39;true&#39; scrolling=&#39;no&#39; src=&#39;https://www.strava.com/athletes/30541205/latest-rides/d457a8708ec9a08e2d386aad15457cce4af55302&#39;&gt;&lt;/iframe&gt;</textarea>
+</div>
+<div class='spans8'>
+<h3 class='marginless'>Summary Widget</h3>
+<p>Display your stats for the current week.</p>
+<section class='widget'><img src="https://d3nn82uaxijpm6.cloudfront.net/images/widget/profile_widgets_summary.png" /></section>
+<p>Embed the following code in your blog:</p>
+<textarea class='select-on-click' id='embed' readonly>&lt;iframe height=&#39;160&#39; width=&#39;300&#39; frameborder=&#39;0&#39; allowtransparency=&#39;true&#39; scrolling=&#39;no&#39; src=&#39;https://www.strava.com/athletes/30541205/activity-summary/d457a8708ec9a08e2d386aad15457cce4af55302&#39;&gt;&lt;/iframe&gt;</textarea>
+</div>
+</div>
+<div class='foot rightAlign'>
+<a target="_blank" href="https://support.strava.com/hc/en-us/articles/216918527-Share-your-activities-with-a-Strava-Widget">Need help embedding widgets?</a>
+</div>
+</div>
+</div>
+
+<div class='section stats gear bikes hidden'>
+<h3>Bikes</h3>
+<table>
+<tr>
+<td class='half' style='width: 50%'>
+<a href="/bikes/7227349">Canyon Strive</a>
+</td>
+<td>2,177.3 km</td>
+</tr>
+<tr>
+<td class='half' style='width: 50%'>
+<a href="/bikes/9141008">Giant Stance</a>
+</td>
+<td>761.8 km</td>
+</tr>
+<tr>
+<td class='half' style='width: 50%'>
+<a href="/bikes/8772214">Giant TCR</a>
+</td>
+<td>21,155.8 km</td>
+</tr>
+<tr>
+<td class='half' style='width: 50%'>
+<a href="/bikes/15098282">Kickr</a>
+</td>
+<td>756.8 km</td>
+</tr>
+</table>
+</div>
+<div class='hidden'><script id='glossary-template' type='text/template'>
+<div class='glossary-header'>
+<h3 class='mb-0'>Strava Glossary</h3>
+</div>
+<div class='glossary-body'>
+<div class='btn-group-vertical' role='group'>
+<button class='btn btn-default dt' data-glossary-term='definition-suffer-score' role='group' type='button'>
+Relative Effort
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-perceived-exertion' role='group' type='button'>
+Perceived Exertion
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-energy-output' role='group' type='button'>
+Energy Output
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-average-power' role='group' type='button'>
+Average Power
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-vam' role='group' type='button'>
+<abbr title='Vertical ascent in meters/hour'>VAM</abbr>
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-intensity' role='group' type='button'>
+Intensity
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-segment' role='group' type='button'>
+Segments
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-all-time-prs' role='group' type='button'>
+All-time Personal Records
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-best-efforts' role='group' type='button'>
+Best Efforts
+</button>
+</div>
+<div class='main'></div>
+</div>
+</script>
+<script id='glossary-power-template' type='text/template'>
+<div class='glossary-header'>
+<h3 class='mb-0'>Strava Glossary</h3>
+</div>
+<div class='glossary-body'>
+<div class='btn-group-vertical' role='group'>
+<button class='btn btn-default dt' data-glossary-term='definition-ftp' role='group' type='button'>
+<abbr title='Functional Threshold Power'>FTP</abbr>
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-calculating-ftp' role='group' type='button'>
+Calculating Your FTP
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-weighted-average-power' role='group' type='button'>
+Weighted Average Power
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-total-work' role='group' type='button'>
+Total Work
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-intensity' role='group' type='button'>
+Intensity
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-segment-intensity' role='group' type='button'>
+Segment Intensity
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-training-load' role='group' type='button'>
+Training Load
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-power-curve' role='group' type='button'>
+Power Curve
+</button>
+<button class='btn btn-default dt' data-glossary-term='definition-power-zones' role='group' type='button'>
+Power Zones
+</button>
+</div>
+<div class='main'></div>
+</div>
+</script>
+<script id='glossary-definition-segment-intensity-template' type='text/template'>
+<h4>Segment Intensity</h4>
+<p>Intensity on Segments gives you a simple visual indication of how hard you went on a given segment by comparing the effort with your best power for the duration of that segment over the last 6 weeks.</p>
+<p>For example, if you maintained 300<abbr title='Watts'>W</abbr> for a 10-minute segment and your best 10-minute power over the past 6 weeks was 330W, your segment intensity will be 90%.</p>
+</script>
+<script id='glossary-definition-ftp-template' type='text/template'>
+<h4><abbr title='Functional Threshold Power'>FTP</abbr></h4>
+<p>Your Functional Threshold Power (FTP) is the maximum average power that you can hold for one continuous hour. For example, if you were to ride a 40k time trial in 60 minutes at an average power of 275<abbr title='Watts'>W</abbr>, your FTP would be 275W.</p>
+<p>FTP is the keystone to training with power. It allows Strava to determine how hard a ride is for you. You doing 300W might feel much different than someone less trained doing 300W and FTP allows us to gauge just how hard segments, rides, and even weeks or months of training were for you!</p>
+</script>
+<script id='glossary-definition-calculating-ftp-template' type='text/template'>
+<h4>Calculating Your FTP</h4>
+<p>We recommend you test for your FTP at least every few weeks to a month while you&#39;re training. Here are some tips to get the most out of your FTP testing:</p>
+<p>It&#39;s extremely taxing on your body (and your training program) to continuously push out 60-minute max efforts. It&#39;s also difficult to find a stretch of road where you can ride for 60 minutes uninterrupted and maintain a steady wattage. Thus, the easiest way to calculate your FTP is to test your best average power for 20 minutes. We believe 20 minutes is enough time to stress the same physiological systems as a 60-minute effort would and it is easier to consistently do within your season.</p>
+<ol>
+<li>Try to reproduce the same conditions each test – this means use the same stretch of road or always use the same trainer/rollers</li>
+<li>Make sure you are fresh (the previous few days should be light in terms of training load)</li>
+<li>Properly warm up</li>
+</ol>
+</script>
+<script id='glossary-definition-weighted-average-power-template' type='text/template'>
+<h4>Weighted Average Power</h4>
+<p>When you ride with a power meter, you&#39;ll notice how your power jumps all over the place based on the terrain, grade, wind, and other factors. Weighted Average Power looks at all of this variation and provides an average power for your ride that is a better indicator of your effort than simply taking your average power. It is our best guess at your average power if you rode at the exact same wattage the entire ride.</p>
+</script>
+<script id='glossary-definition-total-work-template' type='text/template'>
+<h4>Total Work</h4>
+<p>Total Work, expressed in kilojoules (kJ), is simply the sum of the watts generated during your ride. There is a close 1–to–1 ratio with Total Work and Calories expended during a ride.</p>
+</script>
+<script id='glossary-definition-intensity-template' type='text/template'>
+<h4>Intensity</h4>
+<p>Intensity is our way of showing how difficult a ride was as compared to your <abbr title ='Functional Threshold Power'>FTP</abbr>. We look at your Weighted Average Power for the ride and compare it to your FTP. If your Weighted Average Power was 250<abbr title='Watts'>W</abbr> and your FTP 300<abbr title='Watts'>W</abbr>, the Intensity would be 83%. It's very possible to have an Intensity of over 100% if the ride was shorter than an hour.</p>
+<ul>
+<li>Endurance / Recovery Ride – 65% and lower</li>
+<li>Moderate Ride – 65-80%</li>
+<li>Tempo Ride – 80-95%</li>
+<li>Time Trial or Race – 95-105%</li>
+<li>Short Time Trial or Race – 105% and higher</li>
+</ul>
+</script>
+<script id='glossary-definition-training-load-template' type='text/template'>
+<h4>Training Load</h4>
+<p>We calculate Training Load by comparing your power during your ride to your <abbr title='Functional Threshold Power'>FTP</abbr> and determining how much load you put on your body during the workout. Training Load is a great way to determine how much rest you need after your workouts. The guide below will tell you how long after a workout it will take you to fully recover:</p>
+<ul>
+<li>About 24 hours – 125 and lower</li>
+<li>36-48 hours – 125-250</li>
+<li>At least 3 days – 250-400</li>
+<li>At least 5 days – 400+</li>
+</ul>
+</script>
+<script id='glossary-definition-power-curve-template' type='text/template'>
+<h4>Power Curve</h4>
+<p>The Power Curve shows your best average power for time periods of 1 second up to the length of your ride. We search your entire ride and find these best efforts and you can compare them with your best efforts for your last 6 weeks, the current year, or years in the past!</p>
+<p>The Power Curve can be displayed in Watts (W) or Watts per Kilogram (W/kg.) on your own activity.</p>
+</script>
+<script id='glossary-definition-power-zones-template' type='text/template'>
+<h4>Power Zones</h4>
+<p>While the Power Curve shows your best efforts for given periods of time, Power Zone charts take each 1 second of power of your ride and put it into a bucket. The buckets are based on your <abbr title='Functional Threshold Power'>FTP</abbr> and are as follows:</p>
+<ol>
+<li>Active Recovery – Social pace with very little physiological effect on your body. Can be used in between intervals and for recovery rides.</li>
+<li>Endurance – Easy pace that you could ride “all day long” Conversation is still possible with little concentration required.</li>
+<li>Tempo – Brisk pace that can be maintained for a few hours that requires concentration when riding alone. Breathing in tempo is rhythmic and may become strained at the upper end of this zone.</li>
+<li>Threshold – Moderate to hard effort and leg fatigue that can be maintained for up to 1 hour. Conversation is difficult and concentration is required.</li>
+<li>VO2Max – Power that is primarily taxing your VO2Max system. Leg fatigue is high and conversation is not possible. VO2Max can be maintained for 3-8 minutes.</li>
+<li>Anaerobic – Extremely hard efforts with severe leg fatigue that can be maintained for 30 seconds to 3 minutes.</li>
+<li>Neuromuscular – Sprinting power that is taxing your neuromuscular system and can be maintained for 1-20 seconds.</li>
+</ol>
+</script>
+<script id='glossary-definition-suffer-score-template' type='text/template'>
+<h4>Relative Effort</h4>
+<p>Relative Effort is an analysis of your heart rate data. By tracking your heart rate through your workout and its level relative to your maximum heart rate, we attach a value to show exactly how hard you worked. The more time you spend going full gas and the longer your activity, the higher the score. Compare your Relative Effort with friends and pros, see if you can do a truly epic workout and motivate yourself to push that extra bit harder! Relative Effort was inspired by the concept of TRIMP (TRaining IMPulse) coined by Dr. Eric Bannister.</p>
+</script>
+<script id='glossary-definition-perceived-exertion-template' type='text/template'>
+<h4>Perceived Exertion</h4>
+<p>Perceived Exertion lets you manually record how intense your efforts feel on a 1-10 scale ranging from “Easy” to “Max Effort.” When tracking how difficult a workout feels overall, Perceived Exertion can stand in for an athlete’s heart rate data. That means Perceived Exertion can power features that otherwise require heart rate data, like Relative Effort and Fitness. Add Perceived Exertion to activities for a layer of qualitative data, or when you happen to forget your heart rate monitor.</p>
+</script>
+<script id='glossary-definition-energy-output-template' type='text/template'>
+<h4>Energy Output</h4>
+<p>Energy Output measures the amount of work you&#39;ve done during a ride, expressed in kilojoules (KJ). It is a factor of how much you&#39;re pedaling, how fast you&#39;re pedaling and how much force you&#39;re exerting on the pedals (measured in W). Power output is most accurately taken from a power meter, but if you don&#39;t have a power meter we give a rough approximation through our power estimator.</p>
+</script>
+<script id='glossary-definition-average-power-template' type='text/template'>
+<h4>Average Power</h4>
+<p>Average power reflects your average power value during a ride, expressed in Watts (a measure of how much energy you are exerting onto the pedals). This is inclusive of the entire ride, and takes coasting into account as well. Average power is most accurately measured with a power meter, though if you don&#39;t have a power meter we give a rough approximation through our power estimator.</p>
+</script>
+<script id='glossary-definition-vam-template' type='text/template'>
+<h4><abbr title='Vertical ascent in meters/hour'>VAM</abbr></h4>
+<p>VAM measures your Vertical Ascent in Meters/hour – it measures how quickly you are traveling upward. VAM is useful for comparing your effort on different hills and segments, and is used by both cyclists and runners. To get a high VAM score, grades between 6-10% generally present the best opportunity to ascend quickly, as they are steep enough to avoid wind, and gradual enough to allow unrestricted motion.</p>
+</script>
+<script id='glossary-definition-intensity-template' type='text/template'>
+<h4>Intensity</h4>
+<p>Intensity is a measure that describes running activities on a 10-point scale, with race pace set to 10. The pace used to calculate the intensity takes into account the distance of the run and elevation gained and lost over the run. Now you can instantly gauge how tough your pace is for a run, and see if you&#39;re slowing down enough on your recovery runs.</p>
+</script>
+<script id='glossary-definition-segment-template' type='text/template'>
+<h4>Segments</h4>
+<p>A segment is Strava&#39;s term for a specific section of a road, climb or trail. Strava athletes can create segments from their uploaded activities. Strava tracks your performance on each segment every time you run or ride so you can see how you&#39;re progressing over time, and compare your results with other athletes on Strava: your friends, local athletes and even the pros. Start creating segments and see where you land on the leaderboards.</p>
+</script>
+<script id='glossary-definition-best-efforts-template' type='text/template'>
+<h4>Best Efforts</h4>
+<p>Best Efforts are calculated using your GPS-based running or cycling activities, and/or cycling activities with power data. Indoor Rides will only count towards power Best Efforts. Strava analyzes the activity to identify the fastest rolling time for benchmark distances, longest activities, activities with most elevation, biggest single climbs and best power outputs at benchmark time intervals. They are considered estimates because they are subject to normal discrepancies in GPS and power meter accuracy.</p>
+<p>
+How are all-time personal records different from Best Efforts?
+</p>
+<ul>
+<li>All-time personal records are an athlete&#39;s best performance ever in an official race or over a verified, known distance or course.</li>
+<li>Best Efforts are training level insights in GPS and power-based activities.</li>
+</ul>
+<p>Learn more about Best Efforts <a href='https://support.strava.com/hc/en-us/articles/19685360245005-Best-Efforts-Overview'>here</a>.</p>
+</script>
+<script id='glossary-definition-all-time-prs-template' type='text/template'>
+<h4>All-time Personal Records</h4>
+<p>All-time Personal Records (PRs) represent an athlete&#39;s fastest time ever run for benchmark distances. PRs are manually entered, and can be linked to official race results and Strava activities.</p>
+<p>Whether the PR is from a track, road, or trail race, the PR is often verified by a known time over the race distance. We know that PRs matter down to the second, and we know that GPS data isn&#39;t quite as accurate as a time over a verified race course.</p>
+<p>How are All-time Personal Records different from Best Efforts?</p>
+<ul>
+<li>All-time personal records are an athlete&#39;s best performance ever in an official race or over a verified, known distance or course.</li>
+<li>Best Efforts are training level insights in GPS and power-based activities.</li>
+</ul>
+</script>
+</div>
+</div>
+</div>
+</div>
+<footer><div class='footer-promos'>
+<div class='container'>
+<div class='row'>
+<div class='promo col-md-4 js-channel-footer-left'>
+<h3 class='h4'>Your Recent Activities</h3>
+<ul class='recent-activities'>
+<li>
+<span class="app-icon-wrapper  "><span class="app-icon icon-virtualride icon-dark icon-sm">Virtual Ride</span></span>
+<a class='minimal' href='/activities/12924085045'>Zwift - Race: Community Racing Festival</a>
+</li>
+<li>
+<span class="app-icon-wrapper  "><span class="app-icon icon-ride icon-dark icon-sm">Ride</span></span>
+<a class='minimal' href='/activities/12910897730'>Wahoo SYSTM: The Shovel</a>
+</li>
+<li>
+<span class="app-icon-wrapper  "><span class="app-icon icon-ride icon-dark icon-sm">Ride</span></span>
+<a class='minimal' href='/activities/12901559799'>Wahoo SYSTM: Bavaria: Oberjoch</a>
+</li>
+<li>
+<span class="app-icon-wrapper  "><span class="app-icon icon-ride icon-dark icon-sm">Ride</span></span>
+<a class='minimal' href='/activities/12891888962'>Wahoo SYSTM: ALL Access EF 1: Tempo: Blocks</a>
+</li>
+<li>
+<span class="app-icon-wrapper  "><span class="app-icon icon-ride icon-dark icon-sm">Ride</span></span>
+<a class='minimal' href='/activities/12864641265'>Wahoo SYSTM: The Trick</a>
+</li>
+</ul>
+</div>
+<div class='promo col-md-4 border-left js-channel-footer-center'>
+<h3 class='h4'>Strava Stories</h3>
+<p>
+With athlete profiles, training tips and advice, and the latest product updates, <a href="https://stories.strava.com">Strava Stories</a> is the place to discover the latest content from Strava.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class='footer-global container'>
+<div class='row'>
+<div class='col-md-2'>
+<div title="Return to the Strava home page" class="branding logo-lg logo-bw"><a class="branding-content" href="/"><span class="sr-only">Strava</span></a></div>
+<div class='copyright'>
+© 2024 Strava
+</div>
+</div>
+<div class='col-md-2 nav'>
+<h4 class='topless'>About</h4>
+<ul class='list-unstyled'>
+<li><a href="/about">About</a></li>
+<li><a href="/features">Features</a></li>
+<li><a href="/mobile">Mobile</a></li>
+<li><a href="/account">Subscription</a></li>
+<li><a href="/family?origin=global_footer">Family Plan</a></li>
+<li><a href="/student?origin=global_footer">Student Discount</a></li>
+<li><a href="/gift?origin=global_footer">Send a Gift</a></li>
+<li><a href="/legal/privacy">Privacy Policy</a></li>
+<li><link rel="preload" href="https://web-assets.strava.com/assets/federated/cpra-compliance-cta-wrapper/remoteEntry.js?t=2024-11-18T05:33:52+00:00" as="script">
+<div data-is-published='' data-react-class='Microfrontend' data-react-props='{&quot;scope&quot;:&quot;strava_cpra_compliance_cta_wrapper&quot;,&quot;url&quot;:&quot;https://web-assets.strava.com/assets/federated/cpra-compliance-cta-wrapper/remoteEntry.js?t=2024-11-18T05:33:52+00:00&quot;,&quot;component&quot;:&quot;./CPRAComplianceCTAWrapper&quot;,&quot;appContext&quot;:{&quot;isLoggedIn&quot;:true},&quot;experiments&quot;:{}}'></div>
+</li>
+<li><a href="/legal/terms">Terms and Conditions</a></li>
+<li><a href="https://support.strava.com/hc/en-us/articles/216917717-About-Strava-Maps">About Our Maps</a></li>
+</ul>
+</div>
+<div class='col-md-2 nav'>
+<h4 class='topless'>Explore</h4>
+<ul class='list-unstyled'>
+<li><a href="/routes/hiking/usa">Routes</a></li>
+</ul>
+
+</div>
+<div class='col-md-2 nav'>
+<h4 class='topless'>Follow</h4>
+<ul class='list-unstyled'>
+<li><a target="_blank" href="http://www.facebook.com/Strava">Facebook</a></li>
+<li><a target="_blank" href="http://twitter.com/strava">Twitter</a></li>
+<li><a target="_blank" href="http://instagram.com/strava">Instagram</a></li>
+<li><a target="_blank" href="http://www.youtube.com/stravainc">YouTube</a></li>
+<li><a href="https://stories.strava.com">Stories</a></li>
+</ul>
+</div>
+<div class='col-md-2 nav'>
+<h4 class='topless'>Help</h4>
+<ul class='list-unstyled'>
+<li><a href="https://strava.zendesk.com/home">Strava Support</a></li>
+</ul>
+
+</div>
+<div class='col-md-2 nav'>
+<h4 class='topless'>More</h4>
+<ul class='list-unstyled'>
+<li><a href="/careers">Careers</a></li>
+<li><a href="https://press.strava.com">Press</a></li>
+<li><a href="https://business.strava.com?utm_source=footer&amp;utm_medium=referral">Business</a></li>
+<li><a href="https://partners.strava.com">Partner Center</a></li>
+<li><a href="http://labs.strava.com/developers">Developers</a></li>
+<li><a href="http://labs.strava.com">Labs</a></li>
+<li><a href="/community-standards">Strava Community Standards</a></li>
+</ul>
+<div class='dropdown drop-down-menu drop-down-xs' id='language-picker'>
+<button class='btn btn-default btn-xs dropdown-selection btn-white selection'>British English</button>
+<ul class='options dropdown-menu anchor-right anchor-bottom'>
+<li>
+<div class='replace-selection clickable language-pick' language-code='en-GB'>British English</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='de-DE'>Deutsch</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='en-US'>English (US)</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='es-ES'>español</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='es-419'>español latinoamericano</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='fr-FR'>français</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='id-ID'>Indonesian</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='it-IT'>italiano</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='nl-NL'>Nederlands</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='pt-PT'>português</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='pt-BR'>português do Brasil</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='ru-RU'>русский</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='ja-JP'>日本語</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='zh-CN'>简体中文</div>
+</li>
+<li>
+<div class='replace-selection clickable language-pick' language-code='zh-TW'>繁體中文</div>
+</li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+<a id="back-to-top" class="media-sm-show visible-sm-block" href="#">Top ↑</a>
+</footer>
+
+
+</div>
+<script src="https://d3nn82uaxijpm6.cloudfront.net/assets/mapbox-41237022ddc77795df30454a57d30eb5783829220796c9784f6daaf690f26ac3.js"></script>
+<script>
+  window._maps_api = "pk.eyJ1Ijoic3RyYXZhIiwiYSI6ImNtMWp3M2UyZDAydzIyam9zaTh6OTNiZm0ifQ.AOpRu_eeNKWg6r-4GS52Kw"
+  jQuery(document).ready(function(){
+    // TODO: no need for locale
+    Strava.Maps.Mapbox.Base.setMapIds({"dark_id":"strava/ckzn9ervt003j15p7z9y0t2yz","satellite_id":"strava/ckzn9habn001i15qtww7535k9","standard_id":"strava/clvman4pm01ga01qr5te2fpma"});
+  });
+</script>
+<script id='lightbox-template' type='text/template'>
+<div class='lightbox-window modal-content'>
+<div class='close-lightbox'>
+<button class='btn btn-unstyled btn-close'>
+<div class='app-icon icon-close icon-xs icon-dark'></div>
+</button>
+</div>
+</div>
+</script>
+<script id='popover-template' type='text/template'>
+<div class='popover'></div>
+</script>
+<script>
+  window._asset_host = "https://d3nn82uaxijpm6.cloudfront.net";
+  window._measurement_preference = "meters";
+  window._date_preference = "%m/%d/%Y";
+  window._datepicker_preference_format = "mm/dd/yy";
+  
+  jQuery(document).ready(function() {
+    Strava.Util.EventLogging.createInstance("https://analytics.strava.com","7215fa60b5f01ecc3967543619f7e3d9", 30541205);
+  });
+</script>
+<script src="https://d3nn82uaxijpm6.cloudfront.net/assets/strava/i18n/locales/en-GB-8eed102cee4b04e444b36a21d3e517a1f43625fbda9a5ac78182676ba660897e.js"></script>
+<script src="https://d3nn82uaxijpm6.cloudfront.net/assets/application-35fb3d833b6ac1fd03e76741286320e16b3bef64cdb547033ad0184413114310.js"></script>
+
+<script src="https://www.strava.com/cookie-banner"></script>
+<script>
+  jQuery(document).ready(function(){
+    typeof StravaCookieBanner !== 'undefined' && StravaCookieBanner.render();
+  });
+</script>
+
+<script src="https://d3nn82uaxijpm6.cloudfront.net/assets/bootstrap.min-a7bfdfbd2fee539589ef513eefe26b630e543cbde9d99a371757033189d830e9.js"></script>
+
+<div id='fb-root'></div>
+<script>
+  // set fbInitialized so we know FB is being initialized async (safegaurd against react loading FB twice)
+  if (window.Strava) window.Strava.fbInitialized = true;
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: "284597785309",
+      status: true,
+      cookie: true,
+      xfbml: true,
+      version: "v7.0"
+    });
+    Strava.Facebook.PermissionsManager.getInstance().facebookReady();
+    jQuery('#fb-root').trigger('facebook:init');
+  };
+  (function(d){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_GB/sdk.js";
+    ref.parentNode.insertBefore(js, ref);
+  }(document));
+</script>
+
+
+<script>
+  var currentAthlete = new Strava.Models.CurrentAthlete({"id":30541205,"logged_in":true,"display_name":"Domen Preloznik","first_name":"Domen","last_name":"Preloznik","premium":true,"has_power_analysis_access":true,"photo_large":"https://dgalywyr863hv.cloudfront.net/pictures/athletes/30541205/31841726/3/large.jpg","photo":"https://dgalywyr863hv.cloudfront.net/pictures/athletes/30541205/31841726/3/large.jpg","badge":"\u003cdiv class=\"badge premium tiny\" title=\"Subscriber\"\u003e\u003c/div\u003e","measurement_preference":"meters","weight_measurement_unit":"kg","type":0,"member_type":"premium","display_location":"Celje, SLOVENIA, Slovenia","gender":"M","geo":{"city":"Celje","state":"SLOVENIA","country":"Slovenia","lat_lng":[46.0553,14.5144]},"has_leaderboards_access":true,"has_pace_zone_analysis_access":true,"is_segments_restricted":false,"is_trial_eligible":false});
+  HAML.globals = function() {
+    return {
+      currentAthlete: currentAthlete,
+      renderPartial: function(name, context) {
+        if (context == null) {
+          context = this;
+        }
+        return JST[name](context);
+      }
+    }
+  }
+</script>
+
+<script>
+  new Strava.Initializer();
+</script>
+<script>
+  jQuery(document).ready(function($){
+    Strava.ExternalAnalytics.trackV2({
+      category: 'profile',
+      page: 30541205 === 30541205 ? 'profile_own' : 'profile',
+      properties: {
+        athlete_id:  30541205,
+        requested_athlete_id: 30541205
+      },
+      action: 'screen_enter'
+    });
+  
+    window.addEventListener('beforeunload', function () {
+      Strava.ExternalAnalytics.trackV2({
+        category: 'profile',
+        page: 30541205 === 30541205 ? 'profile_own' : 'profile',
+        properties: {
+          athlete_id:  30541205,
+          requested_athlete_id: 30541205
+        },
+        action: 'screen_exit'
+      });
+    });
+  });
+</script>
+<script>
+  jQuery(document).ready(function($){
+    if ($('.description-content').height() > $('.description-container').height()) {
+      $('#athlete-description').addClass('description-overflow');
+    }
+    $('#toggle-description').on('click', function(e){
+      $('#athlete-description').toggleClass('expand-description');
+      e.preventDefault();
+    });
+  });
+</script>
+<script src="https://d3nn82uaxijpm6.cloudfront.net/assets/strava/maps/mapbox/manifest-14f15fc01eaabbc5f4c8b205d10f57b06aca17bb87e3345f642873d4a220604c.js"></script>
+<script>
+  jQuery(document).ready(function() {
+    var currentAthleteId = 30541205;
+    var trophiesAnalyticsPageType = (30541205 === currentAthleteId) ? 'profile_own' : 'profile_other';
+    var trophiesAnalyticsProperties = {challenge_id: [[1013,1471,1744,1722,1686,1753,1758,1792,1955,1953,2026,2081,2074,2018,2100,2128,2252,2377,2318,2570,2605,3598]]};
+    if (trophiesAnalyticsPageType === 'profile_other') {
+      trophiesAnalyticsProperties['other_athlete'] = 30541205;
+    }
+  
+    jQuery('.tab.trophy-case').on('click', function(event) {
+      Strava.ExternalAnalytics.trackV2({
+        category: 'challenges',
+        page: trophiesAnalyticsPageType,
+        action: 'click',
+        properties: trophiesAnalyticsProperties,
+        element: 'all_trophies'
+      });
+    });
+  });
+</script>
+<script>
+  jQuery(document).ready(function(){
+    jQuery('div.share-trophies').on('click', 'span.share-fb', function() {
+      FB.ui({
+        method: 'share',
+        href: "https://www.strava.com/athletes/30541205/trophy-case",
+        display: 'popup'
+      })
+    });
+  });
+</script>
+<script>
+  var gInitialState = null;
+  jQuery(function($) {
+    var dialogs = {
+      "embed-athlete-widget": $('#embed-athlete-widget-dialog').dialog({
+          autoOpen: false,
+          resizable: false,
+          draggable: false,
+          modal: true,
+          height: 560,
+          width: 680,
+          title: "Which Profile Widget do you want to embed?"
+        })
+    };
+  
+    function openShareDialog( dialog ) {
+      for (var dialogName in dialogs) {
+        if (dialogName != dialog) {
+          dialogs[dialogName].dialog('close')
+        }
+      }
+      dialogs[dialog].dialog('open')
+    }
+  
+    $('a#embed-athlete-widget').click(function() {
+      openShareDialog('embed-athlete-widget');
+      return true;
+    });
+  }(jQuery));
+</script>
+<script src="https://d3nn82uaxijpm6.cloudfront.net/assets/strava/athletes/profile_manifest-4efa73391efa976fe49df68c1660991f26b2072724721c8bbed3b38f18792617.js"></script>
+<script>
+  var personalRecordsView = new Strava.Athletes.PersonalRecordsView(30541205, 30541205, true);
+  let numSports = 4
+  console.log(numSports);
+  
+  jQuery(function($) {
+    function showSport(tab_number) {
+      for (let i = 0; i < numSports; ++i) {
+        if(i === tab_number) {
+          $('.comparison .sport-' + i).addClass('active-tab').show();
+        } else {
+          $('.comparison .sport-' + i).removeClass('active-tab').hide();
+        }
+      }
+    }
+  
+    function displayLoader() {
+      var spinner = '<div class="spinner centered sm"><div class="graphic"/></div>';
+      for (let i = 0; i < numSports; ++i) {
+        $('#sport-' + i + '-ytd').html(spinner);
+      }
+    }
+  
+    function showGear() {
+      if($('.comparison .active-tab .button.selected.ridelike')[0]){
+        $('.section.stats.gear.bikes').show();
+        $('.section.stats.gear.shoes').hide();
+      } else if ($('.comparison .active-tab .button.selected.uses-shoes')[0]) {
+        $('.section.stats.gear.shoes').show();
+        $('.section.stats.gear.bikes').hide();
+      } else {
+        $('.section.stats.gear.shoes').hide();
+        $('.section.stats.gear.bikes').hide();
+      }
+    }
+  
+    function changeYear(clicked_year) {
+      displayLoader();
+      var ytd = $(clicked_year).data('value');
+      for (let i = 0; i < numSports; ++i) {
+        $('#ytd_year_sport-' + i + ' .selection').html(ytd);
+      }
+  
+      $.ajax({
+        url: '/athletes/30541205/profile_sidebar_comparison?hl=en-GB',
+        data: {
+          ytd_year: ytd
+        },
+        dataType: 'html',
+        success: function(data) {
+          for (let i = 0; i < numSports; ++i) {
+            var sport_result = $('<tbody>').append(data).find('#sport-' + i + '-ytd').html();
+            $('#sport-' + i + '-ytd').html(sport_result);
+          }
+        }
+      });
+    }
+  
+    // load comparison pane asynchronously
+    $(document).ready(function() {
+      $.ajax({
+        url: '/athletes/30541205/profile_sidebar_comparison?hl=en-GB',
+        dataType: 'html',
+        success: function(data) {
+          $('.comparison').html(data);
+  
+          for (let i = 0; i < numSports; ++i) {
+            $('#ytd_year_sport-' + i + ' .options li').click(function() {
+              changeYear(this);
+              showSport(i);
+            });
+          }
+  
+          $('.comparison .sport-0').fadeTo('fast', 1.0);
+  
+          showGear();
+  
+          $('.switches .button').click(function() {
+            for (let i = 0; i < numSports; ++i) {
+              if ($(this).hasClass('sport-' + i + '-tab')) {
+                showSport(i);
+              }
+            }
+  
+            showGear();
+          });
+  
+          personalRecordsView.setElement($('#all-time-prs'));
+          personalRecordsView.fetchModels();
+        }
+      });
+    });
+  }(jQuery));
+</script>
+<script>
+  jQuery(document).ready(function() {
+    if (jQuery('.js-snw-goals-upsell').length > 0) {
+      Strava.ExternalAnalytics.trackV2({
+        category: 'summit_upsell',
+        page: 'profile_own',
+        action: 'screen_enter',
+        element: 'goals'
+      });
+  
+      jQuery('.js-snw-goals-upsell').on('click', 'a', function() {
+        Strava.ExternalAnalytics.trackV2({
+          category: 'summit_upsell',
+          page: 'profile_own',
+          action: 'click',
+          element: 'goals'
+        });
+      });
+    }
+  
+    jQuery(document).on('click', '.edit-goals-btn', function(e) {
+      var log_element = 'edit_goal_' + jQuery(e.target).closest('.btn').data('sport');
+      Strava.ExternalAnalytics.trackV2({
+        category: 'goals',
+        page: 'profile_own',
+        action: 'click',
+        element: log_element
+      });
+    });
+  
+    jQuery(document).on('submit', '.js-edit form', function() {
+      var log_element = 'save_goal_' + jQuery(this).find('input[type=submit]').data('sport');
+      Strava.ExternalAnalytics.trackV2({
+        category: 'goals',
+        page: 'profile_own',
+        action: 'click',
+        element: log_element
+      });
+    });
+  });
+</script>
+<script>
+  jQuery(document).ready(function() {
+    var currentAthleteId = 30541205;
+    var trophiesAnalyticsPageType = (30541205 === currentAthleteId) ? 'profile_own' : 'profile_other';
+    var trophiesAnalyticsProperties = {challenge_id: [1013,1471,1744,1722,1686,1753,1758,1792,1955,1953,2026,2081,2074,2018,2100,2128,2252,2377,2318,2570,2605,3598]};
+    var formAuthenticityToken = '"dI0B9JYVJ3nHDCgMRaYd1XLYUVqjFiM87oBxuBG--rNIw9kvpSU1Z9AuzchsIX0HNJGdBpT4kgYR_0btzgJZkw"';
+  
+    if (trophiesAnalyticsPageType === 'profile_other') {
+      trophiesAnalyticsProperties['other_athlete'] = 30541205;
+    }
+  
+    Strava.Util.Autotrack.configurePage(formAuthenticityToken, currentAthleteId, function(clioClient, autoTrack) {
+      Strava.Feed.ImpressionTracker.configure(["trophy-case"], clioClient, 0);
+      Strava.Feed.PageVisibilityTracker.configure();
+      Strava.Feed.EventTracker.configure(clioClient);
+      jQuery(window).on('unload', function(){ autoTrack.handleUnload(); });
+    });
+  
+    Strava.ExternalAnalytics.trackV2({
+      category: 'challenges',
+      page: trophiesAnalyticsPageType,
+      action: 'screen_enter',
+      properties: trophiesAnalyticsProperties,
+      element: 'trophy_case'
+    });
+  
+    window.addEventListener('beforeunload', function(e) {
+      Strava.ExternalAnalytics.trackV2({
+        category: 'challenges',
+        page: trophiesAnalyticsPageType,
+        action: 'screen_exit',
+        properties: trophiesAnalyticsProperties
+      });
+    });
+  
+    jQuery('.trophy-link').on('click', function(event) {
+      var trophiesAnalyticsProperties = {
+        challenge_id: event.target.dataset.trophyChallengeId,
+        rank: event.target.dataset.trophyRank
+      };
+  
+      if (trophiesAnalyticsPageType === 'profile_other') {
+        trophiesAnalyticsProperties['other_athlete'] = 30541205;
+      }
+  
+      Strava.ExternalAnalytics.trackV2({
+        category: 'challenges',
+        page: trophiesAnalyticsPageType,
+        action: 'click',
+        properties: trophiesAnalyticsProperties,
+        element: 'trophy'
+      });
+    });
+  });
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register("/service_worker.js?v=dLlWydWlG8").then(function(registration) {
+      }, function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+</script>
+<script>
+  jQuery(document).ready(function() {
+    // Scroll Tracking
+    jQuery(document).one('scroll', function(){
+      Strava.ExternalAnalytics.trackV2({
+        category: 'page_scrolled'
+      });
+    });
+  });
+</script>
+<script>
+  jQuery(document).ready(function($) {
+      new Strava.GlobalSearch.SearchFieldController(currentAthlete);
+  });
+  
+  jQuery(document).ready(function() {
+    jQuery('#global-search-button').on('click', function() {
+      const $globalSearchField = jQuery('#global-search-field');
+      const searchText = $globalSearchField.val();
+      const searchType = $globalSearchField.data('search-filter');
+  
+      Strava.ExternalAnalytics.trackV2({
+        category: 'search',
+        page: 'search',
+        action: 'execute_search',
+        properties: {
+          'search_type': searchType,
+          'search_text': searchText
+        }
+      });
+    });
+  
+    jQuery('#global-search-field').on('keypress', function(e) {
+      const searchText = jQuery(this).val();
+      const searchType = jQuery(this).data('search-filter');
+  
+      // When user presses enter, track the search
+      if (e.which == 13) {
+        Strava.ExternalAnalytics.trackV2({
+          category: 'search',
+          page: 'search',
+          action: 'execute_search',
+          properties: {
+            'search_type': searchType,
+            'search_text': searchText
+          }
+        });
+      }
+    });
+  });
+</script>
+<script>
+  // grabs placeholder spacing to remove when microfrontend is finished loading
+  var notifsPlaceholder = document.getElementById('notifications-loading-placeholder');
+  document.addEventListener('notificationsReady', function() {
+    notifsPlaceholder.remove();
+  });
+</script>
+<script>
+  // Mobile Menu transition handler
+  jQuery('.collapsable-nav #container-nav')
+    .on('show.bs.collapse', function(){
+      jQuery('#smartbanner-loading-placeholder').slideUp(100);
+      jQuery('html').addClass('mobile-menu-open');
+    })
+    .on('hidden.bs.collapse', function(){
+      jQuery('#smartbanner-loading-placeholder').slideDown(100);
+      jQuery('html').removeClass('mobile-menu-open');
+    });
+</script>
+<script>
+  // Dismiss function for alert messages
+  jQuery('document').ready(function(){
+    var dismissController = new Strava.Util.DismissController("/dashboard/dismiss_ui");
+    jQuery('.alert-message').on('click', '.dismiss', function(){
+      dismissController.dismiss("");
+      jQuery(this).parents('.alert-message').slideUp('fast');
+    });
+  
+    // check for internet explorer and show banner
+    var userAgent = window.navigator.userAgent;
+    if (userAgent.includes('Trident') || userAgent.includes('MSIE')) {
+      jQuery('#ie-deprecation-message').removeClass('hidden');
+    }
+  });
+</script>
+<script>
+  jQuery(document).ready(function() {
+    new Strava.Util.DropDownMenu('.drop-down-menu')
+    jQuery('.language-pick').each(function(index) {
+      jQuery( this ).click(function() {
+        language = jQuery( this ).attr('language-code');
+        expiration = new Date();
+        expiration.setTime(expiration.getTime() + (1825 * 24 * 60 * 60 * 1000));
+        // Reset any previously set cookie for this page
+        document.cookie = 'ui_language= ; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+        // Set a global cookie
+        document.cookie = 'ui_language=' + language + '; expires=' + expiration + '; path=/';
+        location.reload(true);
+      });
+    });
+  });
+</script>
+<script>
+  jQuery(document).ready(function() {
+    jQuery('#explore-strava, #challenge-list-view, .promo-simple, .promo-fancy, .promo-overlay, .sponsor-link-section, .sponsor').on('click', 'a', function(event) {
+      var link = jQuery(event.target).closest('a');
+      var adzerkClickUri = link.data('adzerk-click-uri');
+      if (adzerkClickUri != null) {
+        jQuery.get(adzerkClickUri); // this is fire-and-forget - we don't need to wait for a successful response from Adzerk
+      }
+    });
+  });
+</script>
+
+
+<script>
+  jQuery(document).ready(function(){
+    if (!Backbone.History.started) {
+      if (Modernizr.history) {
+        Backbone.history.start({ pushState: true, silent: false });
+      } else {
+        Backbone.history.start({ pushState: false, silent: false, hashChange: false });
+      };
+    }
+  });
+</script>
+</body>
+</html>
