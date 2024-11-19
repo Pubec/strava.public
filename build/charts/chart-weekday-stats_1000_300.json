@@ -1,0 +1,72 @@
+{
+    "width": 1000,
+    "height": 300,
+    "options": {
+        "backgroundColor": "#ffffff",
+        "animation": false,
+        "grid": {
+            "left": "3%",
+            "right": "4%",
+            "bottom": "3%",
+            "containLabel": true
+        },
+        "legend": {
+            "show": false
+        },
+        "tooltip": {
+            "trigger": "item",
+            "formatter": "{d}%"
+        },
+        "series": [
+            {
+                "type": "pie",
+                "itemStyle": {
+                    "borderColor": "#fff",
+                    "borderWidth": 2
+                },
+                "label": {
+                    "formatter": "{weekday|{b}}\n{sub|{d}%}",
+                    "lineHeight": 15,
+                    "rich": {
+                        "weekday": {
+                            "fontWeight": "bold"
+                        },
+                        "sub": {
+                            "fontSize": 12
+                        }
+                    }
+                },
+                "data": [
+                    {
+                        "value": 9.81,
+                        "name": "Monday"
+                    },
+                    {
+                        "value": 15.84,
+                        "name": "Tuesday"
+                    },
+                    {
+                        "value": 10.94,
+                        "name": "Wednesday"
+                    },
+                    {
+                        "value": 13.7,
+                        "name": "Thursday"
+                    },
+                    {
+                        "value": 13.9,
+                        "name": "Friday"
+                    },
+                    {
+                        "value": 17.38,
+                        "name": "Saturday"
+                    },
+                    {
+                        "value": 18.44,
+                        "name": "Sunday"
+                    }
+                ]
+            }
+        ]
+    }
+}
