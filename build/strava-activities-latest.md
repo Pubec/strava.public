@@ -10,6 +10,19 @@
         <th align="center"><img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/heart-rate.svg" width="30" alt="average heart rate" title="average heart rate"/></th>
     </tr>
             <tr>
+            <td>21-11-24</td>
+            <td>
+                <img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/activity-ride.svg" width="12" alt="Wahoo SYSTM: On Location - Classic Climbs of France: Alpe d&#039;Huez" title="Wahoo SYSTM: On Location - Classic Climbs of France: Alpe d&#039;Huez"/>
+<a href="https://www.strava.com/activities/12951704537" title="Kcal: 952 | Gear: None ">Wahoo SYSTM: On Location -...</a>
+            </td>
+            <td align="center">37 <sup><sub>km</sub></sup></td>
+            <td align="center">0 <sup><sub>m</sub></sup></td>
+            <td align="center">1:05:32</td>
+            <td align="center">242 <sup><sub>w</sub></sup></td>
+            <td align="center">33.6 <sup><sub>km/h</sub></sup></td>
+            <td align="center">144</td>
+        </tr>
+            <tr>
             <td>20-11-24</td>
             <td>
                 <img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/activity-ride.svg" width="12" alt="Wahoo SYSTM: On Location - Classic Climbs of France: Col de la Couillole" title="Wahoo SYSTM: On Location - Classic Climbs of France: Col de la Couillole"/>
@@ -60,19 +73,6 @@
             <td align="center">207 <sup><sub>w</sub></sup></td>
             <td align="center">31.6 <sup><sub>km/h</sub></sup></td>
             <td align="center">129</td>
-        </tr>
-            <tr>
-            <td>13-11-24</td>
-            <td>
-                <img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/activity-ride.svg" width="12" alt="Wahoo SYSTM: ALL Access EF 1: Tempo: Blocks" title="Wahoo SYSTM: ALL Access EF 1: Tempo: Blocks"/>
-<a href="https://www.strava.com/activities/12891888962" title="Kcal: 735 | Gear: None ">Wahoo SYSTM: ALL Access EF...</a>
-            </td>
-            <td align="center">34 <sup><sub>km</sub></sup></td>
-            <td align="center">0 <sup><sub>m</sub></sup></td>
-            <td align="center">1:09:32</td>
-            <td align="center">176 <sup><sub>w</sub></sup></td>
-            <td align="center">29.7 <sup><sub>km/h</sub></sup></td>
-            <td align="center">120</td>
         </tr>
                 <tr>
             <td colspan="8" align="right"><a href="https://github.com/robiningelbrecht/strava-activities#activities">View all activities</a></td>
