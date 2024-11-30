@@ -10,6 +10,19 @@
         <th align="center"><img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/heart-rate.svg" width="30" alt="average heart rate" title="average heart rate"/></th>
     </tr>
             <tr>
+            <td>30-11-24</td>
+            <td>
+                <img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/activity-ride.svg" width="12" alt="Wahoo SYSTM: On Location - Catalunya: Pt. 2 - Pobla to Coll de Creuetta" title="Wahoo SYSTM: On Location - Catalunya: Pt. 2 - Pobla to Coll de Creuetta"/>
+<a href="https://www.strava.com/activities/13013060504" title="Kcal: 931 | Gear: None ">Wahoo SYSTM: On Location -...</a>
+            </td>
+            <td align="center">38 <sup><sub>km</sub></sup></td>
+            <td align="center">0 <sup><sub>m</sub></sup></td>
+            <td align="center">1:12:17</td>
+            <td align="center">215 <sup><sub>w</sub></sup></td>
+            <td align="center">31.8 <sup><sub>km/h</sub></sup></td>
+            <td align="center">129</td>
+        </tr>
+            <tr>
             <td>29-11-24</td>
             <td>
                 <img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/activity-ride.svg" width="12" alt="Wahoo SYSTM: On Location - Gran Canaria: Serenity" title="Wahoo SYSTM: On Location - Gran Canaria: Serenity"/>
@@ -60,19 +73,6 @@
             <td align="center">300 <sup><sub>w</sub></sup></td>
             <td align="center">39.1 <sup><sub>km/h</sub></sup></td>
             <td align="center">165</td>
-        </tr>
-            <tr>
-            <td>24-11-24</td>
-            <td>
-                                <img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/activity-virtual-ride-zwift.svg" width="12" alt="Race: VirtuSlo 4Endurance" title="Race: VirtuSlo 4Endurance"/>
-<a href="https://www.strava.com/activities/12975093362" title="Kcal: 1293 | Gear: None ">Race: VirtuSlo 4Endurance</a>
-            </td>
-            <td align="center">49 <sup><sub>km</sub></sup></td>
-            <td align="center">477 <sup><sub>m</sub></sup></td>
-            <td align="center">1:15:53</td>
-            <td align="center">273 <sup><sub>w</sub></sup></td>
-            <td align="center">39 <sup><sub>km/h</sub></sup></td>
-            <td align="center">157</td>
         </tr>
                 <tr>
             <td colspan="8" align="right"><a href="https://github.com/robiningelbrecht/strava-activities#activities">View all activities</a></td>
