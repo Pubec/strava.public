@@ -10,6 +10,19 @@
         <th align="center"><img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/heart-rate.svg" width="30" alt="average heart rate" title="average heart rate"/></th>
     </tr>
             <tr>
+            <td>01-12-24</td>
+            <td>
+                <img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/activity-ride.svg" width="12" alt="Wahoo SYSTM: On Location - Med. Coast: Massif de l&#039;Esterel" title="Wahoo SYSTM: On Location - Med. Coast: Massif de l&#039;Esterel"/>
+<a href="https://www.strava.com/activities/13020320757" title="Kcal: 1010 | Gear: None ">Wahoo SYSTM: On Location -...</a>
+            </td>
+            <td align="center">44 <sup><sub>km</sub></sup></td>
+            <td align="center">0 <sup><sub>m</sub></sup></td>
+            <td align="center">1:26:39</td>
+            <td align="center">194 <sup><sub>w</sub></sup></td>
+            <td align="center">30.7 <sup><sub>km/h</sub></sup></td>
+            <td align="center">125</td>
+        </tr>
+            <tr>
             <td>30-11-24</td>
             <td>
                 <img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/activity-ride.svg" width="12" alt="Wahoo SYSTM: On Location - Catalunya: Pt. 2 - Pobla to Coll de Creuetta" title="Wahoo SYSTM: On Location - Catalunya: Pt. 2 - Pobla to Coll de Creuetta"/>
@@ -60,19 +73,6 @@
             <td align="center">275 <sup><sub>w</sub></sup></td>
             <td align="center">41.2 <sup><sub>km/h</sub></sup></td>
             <td align="center">157</td>
-        </tr>
-            <tr>
-            <td>25-11-24</td>
-            <td>
-                                <img src="https://raw.githubusercontent.com/robiningelbrecht/strava-activities/master/public/activity-virtual-ride-zwift.svg" width="12" alt="Race: Zwift Crit Racing Club" title="Race: Zwift Crit Racing Club"/>
-<a href="https://www.strava.com/activities/12981925033" title="Kcal: 535 | Gear: None ">Race: Zwift Crit Racing Club</a>
-            </td>
-            <td align="center">19 <sup><sub>km</sub></sup></td>
-            <td align="center">266 <sup><sub>m</sub></sup></td>
-            <td align="center">29:16</td>
-            <td align="center">300 <sup><sub>w</sub></sup></td>
-            <td align="center">39.1 <sup><sub>km/h</sub></sup></td>
-            <td align="center">165</td>
         </tr>
                 <tr>
             <td colspan="8" align="right"><a href="https://github.com/robiningelbrecht/strava-activities#activities">View all activities</a></td>
